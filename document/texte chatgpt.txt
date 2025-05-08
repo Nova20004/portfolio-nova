@@ -1,0 +1,51 @@
+tu peut maintenant ajouter les autres contenu comme cet a propos ici avec ces desgin magnifique et moderne et aussi pour le competence et ajouter le logo des chaque competence pour etre attirant et ajouter ds animation et pour le projet aussi ajouter des cards pour etre attirant et pour le contact faire un professionnel complet et moderne avec cet code ici : <!-- Sections -->
+  <section id="about" class="min-h-screen px-10 py-20">
+    <h2 class="text-4xl font-bold text-red-600 mb-4">À propos</h2>
+    <p class="text-lg">Je suis un passionné d’informatique...</p>
+  </section>
+
+  <section id="skills" class="min-h-screen px-10 py-20">
+    <h2 class="text-4xl font-bold text-red-600 mb-4">Compétences</h2>
+    <p class="text-lg">HTML, CSS, JavaScript, Python, etc.</p>
+  </section>
+
+  <section id="projects" class="min-h-screen px-10 py-20">
+    <h2 class="text-4xl font-bold text-red-600 mb-4">Projets</h2>
+    <p class="text-lg">Voici quelques projets réalisés...</p>
+  </section>
+
+  <section id="contact" class="min-h-screen px-10 py-20">
+    <h2 class="text-4xl font-bold text-red-600 mb-4">Contact</h2>
+    <p class="text-lg">Envoyez-moi un message...</p>
+  </section>
+
+
+
+
+
+pourquoi cet code ne marche pas alors :   <header class="flex justify-between items-center p-6 px-10 fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/70 text-white shadow-md">
+        <!-- Navbar -->
+    <div class="flex justify-between items-center p-6 px-10 text-5xl">
+      <div class="text-3xl font-bold flex items-center space-x-2">
+        <img src="https://img.icons8.com/ios-filled/30/ffffff/developer.png"/>
+        <span class="transition-all duration-300 text-red-600">NOVA</span>
+      </div>
+      <ul class="hidden md:flex space-x-8 font-medium text-lg" id="navbar">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button id="modeToggle" class="text-2xl">🌙</button>
+      <button id="menu-toggle" class="md:hidden text-3xl">&#9776;</button>
+    </div>
+    <!-- Menu Mobile -->
+  <div id="mobile-menu" class="hidden md:hidden flex-col items-center bg-black/90 text-white px-6 py-4 space-y-4">
+    <a href="#home" class="hover:text-red-400 transition">Accueil</a>
+    <a href="#about" class="hover:text-red-400 transition">À propos</a>
+    <a href="#skills" class="hover:text-red-400 transition">Compétences</a>
+    <a href="#projects" class="hover:text-red-400 transition">Projets</a>
+    <a href="#contact" class="hover:text-red-400 transition">Contact</a>
+  </div>
+  </header> et tu peux le corriger ca et que l'animation des cet code ne changer pas mais juste corriger le responsive des cet bug et fait le espace et que les autres texte ne l'ecrase pas pendant qu'on le survole et aussi le Salut le texte  en bas  coller trop haut des nav barres pendant qu'on le verfier ca resposaivite 
