@@ -1,0 +1,216 @@
+<!-- Projets -->
+<section id="projects" class="min-h-screen px-6 py-20 bg-gray-900">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">Mes Projets GitHub</span>
+    </h2>
+    
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="text-lg md:text-xl text-gray-300">
+        Une sélection de mes projets open-source les plus aboutis. Chaque repository est soigneusement documenté et maintenu.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Projet 1 -->
+      <div class="project-card relative rounded-xl overflow-hidden h-80 group transition-transform duration-300 hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+             alt="Projet GitHub 1">
+        
+        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 z-20">
+          <h3 class="text-2xl font-bold text-white mb-2">Analyse de Données</h3>
+          <p class="text-gray-300 mb-4">Outil d'analyse et visualisation de données en Python</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-blue-600 rounded-full text-xs text-white">Python</span>
+            <span class="px-3 py-1 bg-yellow-500 rounded-full text-xs text-white">Pandas</span>
+            <span class="px-3 py-1 bg-purple-500 rounded-full text-xs text-white">Matplotlib</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex items-center text-gray-300 text-sm">
+              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+              </svg>
+              <span>125</span>
+            </div>
+            <a href="https://github.com/votreprojet1" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg text-sm font-medium hover:opacity-90 transition">
+              Voir sur GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Projet 2 -->
+      <div class="project-card relative rounded-xl overflow-hidden h-80 group transition-transform duration-300 hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+             alt="Projet GitHub 2">
+        
+        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 z-20">
+          <h3 class="text-2xl font-bold text-white mb-2">API RESTful</h3>
+          <p class="text-gray-300 mb-4">Microservice API avec authentification JWT</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-green-600 rounded-full text-xs text-white">Node.js</span>
+            <span class="px-3 py-1 bg-blue-500 rounded-full text-xs text-white">Express</span>
+            <span class="px-3 py-1 bg-yellow-500 rounded-full text-xs text-white">MongoDB</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex items-center text-gray-300 text-sm">
+              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+              </svg>
+              <span>89</span>
+            </div>
+            <a href="https://github.com/votreprojet2" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg text-sm font-medium hover:opacity-90 transition">
+              Voir sur GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Projet 3 -->
+      <div class="project-card relative rounded-xl overflow-hidden h-80 group transition-transform duration-300 hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" 
+             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+             alt="Projet GitHub 3">
+        
+        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 z-20">
+          <h3 class="text-2xl font-bold text-white mb-2">Extension Chrome</h3>
+          <p class="text-gray-300 mb-4">Outil de productivité avec sauvegarde cloud</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-yellow-500 rounded-full text-xs text-white">JavaScript</span>
+            <span class="px-3 py-1 bg-blue-700 rounded-full text-xs text-white">Firebase</span>
+            <span class="px-3 py-1 bg-gray-600 rounded-full text-xs text-white">Chrome API</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex items-center text-gray-300 text-sm">
+              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+              </svg>
+              <span>42</span>
+            </div>
+            <a href="https://github.com/votreprojet3" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg text-sm font-medium hover:opacity-90 transition">
+              Voir sur GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-16">
+      <a href="https://github.com/votreprofil" target="_blank" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:opacity-90 transition shadow-lg hover:shadow-cyan-500/20">
+        Visiter mon GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-card:hover .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 15;
+  }
+  
+  .project-card:hover::before {
+    opacity: 1;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+<!-- Hero Section - Text Left -->
+<div class="md:w-1/2 space-y-8 animate-fade-in-up">
+  <!-- Titre principal avec présentation -->
+  <header class="space-y-4">
+    <h2 class="text-xl md:text-2xl font-mono text-cyan-400 tracking-wider">
+      Bonjour, je me présente
+    </h2>
+    <h1 class="text-4xl lg:text-6xl font-bold leading-tight text-white">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-cyan-400 animate-text-gradient">
+        Joseph Scarlino
+      </span>
+    </h1>
+  </header>
+  
+  <!-- Séparateur et sous-titre -->
+  <div class="flex items-center my-6">
+    <div class="h-1 w-16 bg-gradient-to-r from-red-500 to-cyan-400 mr-4 rounded-full"></div>
+    <p class="text-2xl md:text-3xl font-medium text-gray-200">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-cyan-400">
+        Développeur Front-end
+      </span>
+      <span class="text-gray-400 mx-2">|</span>
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-cyan-300">
+        Technicien Support IT
+      </span>
+    </p>
+  </div>
+
+  <!-- Boutons d'action -->
+  <div class="flex flex-wrap gap-4 pt-2">
+    <a href="#contact"
+       class="relative overflow-hidden group bg-gradient-to-r from-red-500 to-cyan-400 px-8 py-3 rounded-lg text-white font-medium transition-all duration-300 hover:shadow-xl hover:shadow-red-500/30 hover:-translate-y-1">
+      <span class="relative z-10 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+        </svg>
+        Me Contacter
+      </span>
+      <span class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+    </a>
+    
+    <a href="assets/image/JosephScarlino1.pdf" download="JosephScarlino1.pdf" 
+       class="relative overflow-hidden group border-2 border-cyan-400/80 px-8 py-3 rounded-lg text-cyan-400 font-medium transition-all duration-300 hover:bg-cyan-400/10 hover:border-cyan-400 hover:text-white hover:-translate-y-1">
+      <span class="flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+        Télécharger mon CV
+      </span>
+    </a>
+  </div>
+  
+  <!-- Réseaux sociaux avec animations améliorées -->
+  <div class="flex space-x-5 pt-8">
+    <a href="#" class="social-icon group" aria-label="Profil LinkedIn">
+      <div class="icon-container bg-[#0077B5] group-hover:bg-white transition-all duration-300 group-hover:-translate-y-1 shadow-md group-hover:shadow-lg">
+        <svg class="text-white group-hover:text-[#0077B5] transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      </div>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+    
+    <a href="#" class="social-icon group" aria-label="Profil GitHub">
+      <div class="icon-container bg-[#333] group-hover:bg-white transition-all duration-300 group-hover:-translate-y-1 shadow-md group-hover:shadow-lg">
+        <svg class="text-white group-hover:text-[#333] transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </div>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </div>
+</div>

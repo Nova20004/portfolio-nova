@@ -1,0 +1,11 @@
+git remote add origin https://github.com/Nova20004/portfolio-nova.git
+
+
+
+https://portfolio-nova-gamma.vercel.app/
+
+
+commande git pour le nouvelle modification 
+git add . 
+git commit -m "commantaire"
+git push
