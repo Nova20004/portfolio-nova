@@ -68,6 +68,11 @@
   --star-rgb: 255, 255, 255;
   --link-rgb: 255, 255, 255;
 
+  --avatar-bg: radial-gradient(circle at 50% 35%, #1e293b, #0b0f19 70%);
+  --avatar-shadow: none;
+  --avatar-ring-glow: 0.5;
+  --orbit-color: rgba(34, 211, 238, 0.14);
+
   --radius: 1.25rem;
   --header-h: 4.5rem;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -138,6 +143,18 @@
 
   --star-rgb: 30, 41, 59;
   --link-rgb: 51, 65, 85;
+
+  --avatar-bg:
+    radial-gradient(circle at 22% 78%, rgba(34, 211, 238, 0.22), transparent 55%),
+    radial-gradient(circle at 80% 22%, rgba(168, 85, 247, 0.2), transparent 55%),
+    radial-gradient(circle at 50% 35%, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+  --avatar-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 -18px 40px -20px rgba(124, 58, 237, 0.25),
+    0 30px 60px -28px rgba(124, 58, 237, 0.45),
+    0 18px 40px -24px rgba(8, 145, 178, 0.4);
+  --avatar-ring-glow: 0.35;
+  --orbit-color: rgba(8, 145, 178, 0.3);
 }
 
 /* ---------------------------------------------------------
@@ -1243,7 +1260,7 @@ html:not(.js) .section-title::after {
   content: "";
   inset: 0;
   filter: blur(22px);
-  opacity: 0.5;
+  opacity: var(--avatar-ring-glow);
   animation: none;
 }
 
@@ -1252,9 +1269,10 @@ html:not(.js) .section-title::after {
   inset: 0;
   border-radius: 50%;
   padding: 0.5rem;
-  background: radial-gradient(circle at 50% 35%, #1e293b, #0b0f19 70%);
+  background: var(--avatar-bg);
+  box-shadow: var(--avatar-shadow);
   overflow: hidden;
-  transition: transform 0.6s var(--ease-out);
+  transition: transform 0.6s var(--ease-out), box-shadow 0.4s;
 }
 
 .hero-visual:hover .avatar-frame {
@@ -1282,7 +1300,7 @@ html:not(.js) .section-title::after {
 .orbit--2 {
   inset: -18%;
   border-style: solid;
-  border-color: rgba(34, 211, 238, 0.14);
+  border-color: var(--orbit-color);
   animation-duration: 40s;
   animation-direction: reverse;
 }
@@ -1543,7 +1561,10 @@ html:not(.js) .section-title::after {
 
 .pillars {
   display: grid;
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
 }
 
 .pillars > li {
@@ -2410,9 +2431,28 @@ html.js [data-reveal].is-visible {
   animation-delay: var(--d, 0s);
 }
 
+/* Hero copy never starts fully transparent: opacity:0 elements are not counted as painted, which delays LCP. */
 html.js .hero-in {
-  animation: warp-in 1.2s var(--ease-out) backwards;
-  animation-delay: calc(0.35s + var(--d, 0s));
+  animation: hero-warp 1s var(--ease-out) backwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes hero-warp {
+  0% {
+    opacity: 0.08;
+    transform: perspective(900px) translate3d(0, 36px, -160px) rotateX(10deg);
+    filter: blur(6px);
+  }
+
+  60% {
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 @keyframes warp-in {
@@ -2652,4 +2692,115 @@ html.js .hero-in {
   html.js [data-reveal]:not(.is-visible) {
     opacity: 1;
   }
+}
+
+
+
+/* Adaptation du conteneur parent pour remplir tout l'espace */
+.project-card .project-media {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Le tableau de bord s'étire désormais sur 100% de la hauteur et de la largeur */
+.monitor-dashboard {
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem;
+  background: var(--card-bg, rgba(15, 23, 42, 0.85));
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.12));
+  border-radius: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Aligne le haut et le bas parfaitement */
+  box-sizing: border-box;
+}
+
+.monitor-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted, #94a3b8);
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.metric-box {
+  background: var(--input-bg, rgba(255, 255, 255, 0.05));
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.08));
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  color: var(--text-muted, #64748b);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-cyan, #0ea5e9);
+}
+
+.monitor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--card-border, rgba(0, 0, 0, 0.08));
+  font-size: 0.75rem;
+}
+
+.log-text {
+  color: var(--text-muted, #64748b);
+}
+
+.badge-healthy {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+/* Prise en compte du mode clair */
+[data-theme="light"] .monitor-dashboard {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .metric-box {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] .metric-value {
+  color: #0284c7;
+}
+
+[data-theme="light"] .badge-healthy {
+  background: #d1fae5;
+  color: #047857;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,15 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/theme-init.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement, theme = null, lang = null;
+      root.classList.add('js');
+      try { theme = localStorage.getItem('nova-theme'); lang = localStorage.getItem('nova-lang'); } catch (e) {}
+      root.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+      if (lang === 'en') root.setAttribute('lang', 'en');
+    })();
+  </script>
   <script src="assets/js/main.js" defer></script>
 </head>
 
@@ -70,10 +78,10 @@
 
       <div class="nav-actions">
         <div class="lang-switch" role="group" aria-label="Choisir la langue" data-i18n-attr="aria-label:lang.group">
-          <button class="lang-btn" type="button" data-lang="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button>
-          <button class="lang-btn" type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+          <button class="lang-btn" type="button" data-lang="fr" lang="fr" title="Français" aria-pressed="true">FR<span class="sr-only"> — Français</span></button>
+          <button class="lang-btn" type="button" data-lang="en" lang="en" title="English" aria-pressed="false">EN<span class="sr-only"> — English</span></button>
         </div>
-        <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Activer le thème clair" title="Activer le thème clair">
+        <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Activer le thème sombre" title="Activer le thème sombre">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
         </button>
@@ -176,7 +184,7 @@
           <div class="avatar">
             <div class="avatar-ring" aria-hidden="true"></div>
             <div class="avatar-frame">
-              <img src="assets/JOSEPH-removebg-preview%20(3).png" alt="Portrait de Joseph Si-carlino" data-i18n-attr="alt:hero.photoAlt" width="400" height="400">
+              <img src="assets/joseph-avatar.webp" alt="Portrait de Joseph Si-carlino" data-i18n-attr="alt:hero.photoAlt" width="400" height="400" fetchpriority="high" decoding="sync">
             </div>
           </div>
           <span class="hero-badge hero-badge--a glass" aria-hidden="true">
@@ -267,6 +275,7 @@
         </ul>
 
         <ul class="pillars" role="list" data-stagger>
+          <!-- 1. DevOps & CI/CD -->
           <li data-reveal>
             <article class="pillar glass" aria-labelledby="pillar1-title">
               <div class="pillar-head">
@@ -289,7 +298,78 @@
               </ul>
             </article>
           </li>
-
+        
+          <!-- 2. Infrastructure as Code & Automatisation (NOUVEAU) -->
+          <li data-reveal>
+            <article class="pillar glass" aria-labelledby="pillar4-title">
+              <div class="pillar-head">
+                <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+                <span class="level level--proficient">Maîtrisé</span>
+              </div>
+              <h3 id="pillar4-title">Infrastructure as Code (IaC)</h3>
+              <p class="pillar-value">Provisionnement et gestion automatisée d'infrastructures déclaratives et reproductibles sans configuration manuelle.</p>
+              <ul class="pillar-points" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Provisionnement d'infrastructures avec Terraform</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Gestion de configuration automatisée via Ansible</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Playbooks &amp; Rôles pour le déploiement de serveurs</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Versionnage et déploiement d'environnements de test/prod</span></li>
+              </ul>
+              <ul class="tech-list" aria-label="Outils">
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="" width="18" height="18" loading="lazy">Terraform</li>
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="" width="18" height="18" loading="lazy">Ansible</li>
+                <li class="tech-chip"><img class="icon-invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-plain.svg" alt="" width="18" height="18" loading="lazy">Bash</li>
+              </ul>
+            </article>
+          </li>
+        
+          <!-- 3. Orchestration & Conteneurisation (NOUVEAU) -->
+          <li data-reveal>
+            <article class="pillar glass" aria-labelledby="pillar5-title">
+              <div class="pillar-head">
+                <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                <span class="level level--operational">Opérationnel</span>
+              </div>
+              <h3 id="pillar5-title">Orchestration &amp; Kubernetes</h3>
+              <p class="pillar-value">Gestion de clusters de conteneurs pour garantir la haute disponibilité, le passage à l'échelle et la résilience applicative.</p>
+              <ul class="pillar-points" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Déploiement et administration de clusters Kubernetes / K3s</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Gestion des Pods, Deployments, Services et Ingress</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Package management d'applications avec Helm</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Stratégies de haute disponibilité et auto-healing</span></li>
+              </ul>
+              <ul class="tech-list" aria-label="Outils">
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="" width="18" height="18" loading="lazy">Kubernetes</li>
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/helm/helm-original.svg" alt="" width="18" height="18" loading="lazy">Helm</li>
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" width="18" height="18" loading="lazy">Docker</li>
+              </ul>
+            </article>
+          </li>
+        
+          <!-- 4. Virtualisation & Cloud (NOUVEAU) -->
+          <li data-reveal>
+            <article class="pillar glass" aria-labelledby="pillar6-title">
+              <div class="pillar-head">
+                <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></span>
+                <span class="level level--proficient">Maîtrisé</span>
+              </div>
+              <h3 id="pillar6-title">Virtualisation &amp; Cloud</h3>
+              <p class="pillar-value">Isolation des ressources, gestion de machines virtuelles et déploiement d'environnements hybrides et cloud.</p>
+              <ul class="pillar-points" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Hyperviseurs : Proxmox VE, VMware ESXi &amp; VirtualBox</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Création et gestion de Machines Virtuelles (VM) &amp; LXC</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Bases fondamentales Cloud AWS &amp; GCP (EC2, S3, Compute Engine, IAM)</span></li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg><span>Gestion des snapshots, sauvegardes et réseaux virtuels</span></li>
+              </ul>
+              <ul class="tech-list" aria-label="Outils">
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="" width="18" height="18" loading="lazy">AWS</li>
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="" width="18" height="18" loading="lazy">GCP</li>
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" width="18" height="18" loading="lazy">Proxmox</li>
+                <li class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="" width="18" height="18" loading="lazy">Vagrant</li>
+              </ul>
+            </article>
+          </li>
+        
+          <!-- 5. Administration Système & Réseau -->
           <li data-reveal>
             <article class="pillar glass" aria-labelledby="pillar2-title">
               <div class="pillar-head">
@@ -313,7 +393,8 @@
               </ul>
             </article>
           </li>
-
+        
+          <!-- 6. Développement Front-End -->
           <li data-reveal>
             <article class="pillar glass" aria-labelledby="pillar3-title">
               <div class="pillar-head">
@@ -515,46 +596,75 @@
         <div class="project-group">
           <h3 class="group-title" data-reveal><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="projects.devGroup">Développement</span></h3>
           <ul class="projects-grid" role="list" data-stagger>
+            <!-- Projet 3 : Remplacement de GAZELA -->
             <li data-reveal>
               <article class="project-card glass" data-tilt aria-labelledby="proj3-title">
                 <div class="project-media project-media--photo">
-                  <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Ordinateur portable affichant un site web en développement" data-i18n-attr="alt:proj3.alt" width="900" height="506" loading="lazy">
-                  <span class="project-kicker" data-i18n="proj3.kicker">Site vitrine</span>
+                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Interface du Portail Web IT" data-i18n-attr="alt:proj3.alt" width="900" height="506" loading="lazy">
+                  <span class="project-kicker">Application Web</span>
                 </div>
                 <div class="project-body">
-                  <h4 id="proj3-title" class="project-title">Association GAZELA</h4>
-                  <p class="project-desc" data-i18n="proj3.desc">Site vitrine responsive présentant l'association et ses actions, développé avec Django puis mis en ligne et maintenu en production.</p>
+                  <h4 id="proj3-title" class="project-title" data-i18n="proj3.title">Portail Web &amp; Service Desk IT</h4>
+                  <p class="project-desc" data-i18n="proj3.desc">Plateforme full-stack de gestion des tickets et du parc informatique : interface dynamique, API REST, authentification sécurisée et suivi en temps réel.</p>
                   <ul class="tags" aria-label="Technologies" data-i18n-attr="aria-label:projects.tech">
-                    <li class="tag">HTML5</li>
-                    <li class="tag">CSS3</li>
-                    <li class="tag">JavaScript</li>
-                    <li class="tag tag--red">Django</li>
+                    <li class="tag">React</li>
+                    <li class="tag">Django</li>
+                    <li class="tag">PostgreSQL</li>
+                    <li class="tag tag--violet">Docker</li>
                   </ul>
                   <div class="project-actions">
-                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Association GAZELA" data-i18n-attr="aria-label:proj3.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
-                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Association GAZELA" data-i18n-attr="aria-label:proj3.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
+                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Portail Web IT" data-i18n-attr="aria-label:proj3.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
+                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Portail Web IT" data-i18n-attr="aria-label:proj3.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
                   </div>
                 </div>
               </article>
             </li>
 
+            <!-- Projet 4 : Application Monitoring (Lisible en mode Sombre & Clair) -->
             <li data-reveal>
               <article class="project-card glass" data-tilt aria-labelledby="proj4-title">
-                <div class="project-media project-media--photo">
-                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Tableau de bord affichant des graphiques de données" data-i18n-attr="alt:proj4.alt" width="900" height="506" loading="lazy">
-                  <span class="project-kicker">Application</span>
+                <div class="project-media">
+                  <div class="monitor-dashboard" aria-hidden="true">
+                    <div class="monitor-header">
+                      <span class="status-dot"></span>
+                      <span class="monitor-title">Live Metrics · node-prod-01</span>
+                    </div>
+                    <div class="monitor-grid">
+                      <div class="metric-box">
+                        <span class="metric-label">CPU Load</span>
+                        <span class="metric-value">14.2%</span>
+                      </div>
+                      <div class="metric-box">
+                        <span class="metric-label">RAM Usage</span>
+                        <span class="metric-value">3.8 / 16 GB</span>
+                      </div>
+                      <div class="metric-box">
+                        <span class="metric-label">Latency</span>
+                        <span class="metric-value">12 ms</span>
+                      </div>
+                      <div class="metric-box">
+                        <span class="metric-label">Uptime</span>
+                        <span class="metric-value">99.98%</span>
+                      </div>
+                    </div>
+                    <div class="monitor-footer">
+                      <span class="log-text">&gt; Prometheus collector active</span>
+                      <span class="badge-healthy">HEALTHY</span>
+                    </div>
+                  </div>
+                  <span class="project-kicker"><svg aria-hidden="true"><use href="#i-code" /></svg>DevOps &amp; Monitoring</span>
                 </div>
                 <div class="project-body">
-                  <h4 id="proj4-title" class="project-title" data-i18n="proj4.title">Gestion des appels</h4>
-                  <p class="project-desc" data-i18n="proj4.desc">Application Python de suivi des appels : enregistrement, historique et recherche, conçue en mode projet de l'analyse du besoin jusqu'aux tests.</p>
+                  <h4 id="proj4-title" class="project-title" data-i18n="proj4.title">Application Monitoring</h4>
+                  <p class="project-desc" data-i18n="proj4.desc">Plateforme de surveillance en temps réel des serveurs et services : collecte des métriques (CPU, RAM, débit réseau), gestion des logs et alertes automatisées en cas d'incident.</p>
                   <ul class="tags" aria-label="Technologies" data-i18n-attr="aria-label:projects.tech">
-                    <li class="tag">Python</li>
-                    <li class="tag" data-i18n="tag.algo">Algorithmique</li>
-                    <li class="tag tag--violet" data-i18n="tag.business">Application métier</li>
+                    <li class="tag">Prometheus</li>
+                    <li class="tag">Grafana</li>
+                    <li class="tag tag--violet">Docker</li>
                   </ul>
                   <div class="project-actions">
-                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Gestion des appels" data-i18n-attr="aria-label:proj4.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
-                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Gestion des appels" data-i18n-attr="aria-label:proj4.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
+                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Application Monitoring" data-i18n-attr="aria-label:proj4.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
+                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Application Monitoring" data-i18n-attr="aria-label:proj4.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
                   </div>
                 </div>
               </article>

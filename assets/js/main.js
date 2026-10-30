@@ -146,16 +146,16 @@
     'proj2.desc': 'Continuous integration on every push (lint, tests, build), then a Docker image published and automatically deployed to the server with GitHub Actions: zero manual deployments.',
     'proj2.viewLabel': 'View the CI/CD pipeline project',
     'proj2.codeLabel': 'Source code of the CI/CD pipeline project',
-    'proj3.kicker': 'Showcase website',
-    'proj3.alt': 'Laptop showing a website under development',
-    'proj3.desc': 'Responsive showcase website for the association and its activities, built with Django, then deployed and maintained in production.',
-    'proj3.viewLabel': 'View the GAZELA association project',
-    'proj3.codeLabel': 'Source code of the GAZELA association project',
-    'proj4.title': 'Call management',
-    'proj4.alt': 'Dashboard displaying data charts',
-    'proj4.desc': 'Python application for tracking calls: logging, history and search, delivered as a full project from requirements analysis to testing.',
-    'proj4.viewLabel': 'View the call management project',
-    'proj4.codeLabel': 'Source code of the call management project',
+    'proj3.title': 'Web Portal & IT Service Desk',
+    'proj3.alt': 'IT Service Desk web application interface',
+    'proj3.desc': 'Full-stack platform for IT ticketing and asset management: dynamic UI, REST API, secure authentication, and real-time tracking.',
+    'proj3.viewLabel': 'View the IT Web Portal project',
+    'proj3.codeLabel': 'Source code of the IT Web Portal project',
+    'proj4.title': 'Application Monitoring',
+    'proj4.alt': 'Animated monitoring dashboard showing real-time system metrics',
+    'proj4.desc': 'Real-time server and service monitoring platform: metrics collection (CPU, RAM, network bandwidth), log management, and automated incident alerts.',
+    'proj4.viewLabel': 'View the Application Monitoring project',
+    'proj4.codeLabel': 'Source code of the Application Monitoring project',
 
     'contact.eyebrow': 'Sector 06 · Transmission',
     'contact.title': 'Contact me',
@@ -246,7 +246,7 @@
      THEME — dark / light, persisted in localStorage
      --------------------------------------------------------- */
   const themeBtn = $('#theme-toggle');
-  const currentTheme = () => (root.dataset.theme === 'light' ? 'light' : 'dark');
+  const currentTheme = () => (root.dataset.theme === 'dark' ? 'dark' : 'light');
 
   function refreshThemeLabel() {
     const label = currentTheme() === 'dark' ? t('toLight') : t('toDark');
