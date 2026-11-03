@@ -524,6 +524,19 @@ section[tabindex="-1"]:focus {
   border-color: var(--tag-red-border);
 }
 
+.level--intermediate {
+  color: var(--tag-cyan-fg);
+  background: var(--tag-cyan-bg);
+  border-color: var(--tag-cyan-border);
+}
+
+.level--learning {
+  color: var(--text-muted);
+  background: var(--surface);
+  border-color: var(--border-strong);
+  border-style: dashed;
+}
+
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--border);
@@ -1057,7 +1070,15 @@ html:not(.js) .section-title::after {
   display: flex;
   align-items: center;
   padding: calc(var(--header-h) + 3rem) 0 5rem;
-  overflow-x: hidden;
+  /* overflow-x: hidden would compute overflow-y to auto, turning the hero into a nested
+     scroll container that swallows the wheel; clip trims the sides without that. */
+  overflow-x: clip;
+}
+
+@supports not (overflow-x: clip) {
+  .hero {
+    overflow: hidden;
+  }
 }
 
 .hero-grid {
