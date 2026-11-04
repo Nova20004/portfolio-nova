@@ -678,6 +678,43 @@
     });
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('projects-modal');
+    const btnOpen = document.getElementById('open-projects-modal');
+    const btnClose = document.getElementById('close-projects-modal');
+    const btnOk = document.getElementById('btn-modal-ok');
+  
+    const openModal = () => {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+  
+    const closeModal = () => {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+  
+    if (btnOpen) btnOpen.addEventListener('click', openModal);
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnOk) btnOk.addEventListener('click', closeModal);
+  
+    // Fermeture en cliquant en dehors du cadre
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+  
+    // Fermeture avec la touche Échap (ESC)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+        closeModal();
+      }
+    });
+  });
+
   /* ---------------------------------------------------------
      CONTACT FORM (Formspree)
      --------------------------------------------------------- */

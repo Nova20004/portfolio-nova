@@ -538,16 +538,20 @@
                 </div>
                 <div class="project-body">
                   <h4 id="proj1-title" class="project-title" data-i18n="proj1.title">Pipeline CI/CD GitOps</h4>
-                  <p class="project-desc" data-i18n="proj1.desc">Automatisation du build, des tests et de la création d'images Docker pour une application web via GitHub Actions. Chaque push est vérifié et produit une image versionnée, prête à être déployée.</p>
+                  <p class="project-desc" data-i18n="proj1.desc">Microservice FastAPI entièrement automatisé : linting Ruff, tests Pytest, scans de sécurité Trivy, build Docker multi-stage et publication immuable sur GHCR via GitHub Actions.</p>
                   <ul class="tags" aria-label="Technologies" data-i18n-attr="aria-label:projects.tech">
                     <li class="tag">GitHub Actions</li>
                     <li class="tag">Docker</li>
-                    <li class="tag">Linux</li>
+                    <li class="tag">FastAPI</li>
+                    <li class="tag">Pytest</li>
+                    <li class="tag">Ruff</li>
+                    <li class="tag">Trivy</li>
+                    <li class="tag">GHCR</li>
                     <li class="tag tag--violet">CI/CD</li>
                   </ul>
                   <div class="project-actions">
-                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Pipeline CI/CD GitOps" data-i18n-attr="aria-label:proj1.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
-                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Pipeline CI/CD GitOps" data-i18n-attr="aria-label:proj1.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
+                    <a class="btn btn-primary btn-sm" href="https://github.com/Nova20004/cicd-gitops-pipeline" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet Pipeline CI/CD GitOps" data-i18n-attr="aria-label:proj1.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
+                    <a class="btn btn-ghost btn-sm" href="https://github.com/Nova20004/cicd-gitops-pipeline" target="_blank" rel="noopener noreferrer" aria-label="Code source du projet Pipeline CI/CD GitOps" data-i18n-attr="aria-label:proj1.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
                   </div>
                 </div>
               </article>
@@ -555,22 +559,34 @@
 
             <li data-reveal>
               <article class="project-card glass" data-tilt aria-labelledby="proj2-title">
-                <div class="project-media project-media--photo">
-                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Interface de l'application Full-Stack Next.js" data-i18n-attr="alt:proj2.alt" width="900" height="506" loading="lazy">
-                  <span class="project-kicker" data-i18n="proj2.kicker">Application Web</span>
+                <div class="project-media">
+                  <div class="terminal" aria-hidden="true">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <pre class="terminal-lines"><code><span class="term-prompt">argocd@k8s:~$</span> argocd app sync production-stack
+              <span class="term-ok">TIMESTAMP            GROUP      KIND         NAME        STATUS   HEALTH</span>
+              <span class="term-ok">2026-11-04T08:00:12  apps       Deployment   api-v1      Synced   Healthy</span>
+              <span class="term-ok">2026-11-04T08:00:12  networking Ingress      api-ingress Synced   Healthy</span>
+              <span class="term-prompt">k8s-cluster:~$</span> kubectl get pods -n production
+              <span class="term-ok">NAME                      READY   STATUS    RESTARTS   AGE</span>
+              <span class="term-ok">api-v1-6b4c8d9f4-2x89z   1/1     Running   0          42m</span>
+              <span class="term-prompt">k8s-cluster:~$</span> <span class="term-cursor"></span></code></pre>
+                  </div>
+                  <span class="project-kicker"><svg aria-hidden="true"><use href="#i-server" /></svg>Kubernetes &amp; Cloud-Native</span>
                 </div>
                 <div class="project-body">
-                  <h4 id="proj2-title" class="project-title" data-i18n="proj2.title">Application Full-Stack Next.js</h4>
-                  <p class="project-desc" data-i18n="proj2.desc">Développement d'une plateforme web performante (SSR/SSG), avec API intégrée et base de données relationnelle, le tout conteneurisé avec Docker pour un environnement identique en local et sur le serveur.</p>
+                  <h4 id="proj2-title" class="project-title" data-i18n="proj2.title">Cluster Kubernetes &amp; GitOps Orchestration</h4>
+                  <p class="project-desc" data-i18n="proj2.desc">Déploiement et gestion d'un cluster Kubernetes (K3s/Minikube) orchestré en GitOps avec ArgoCD et Helm. Gestion déclarative des manifests, rolling updates sans interruption de service (zero-downtime) et sécurisation du trafic via Ingress Controller.</p>
                   <ul class="tags" aria-label="Technologies" data-i18n-attr="aria-label:projects.tech">
-                    <li class="tag">Next.js</li>
-                    <li class="tag">React</li>
-                    <li class="tag">PostgreSQL</li>
-                    <li class="tag tag--violet">Docker</li>
+                    <li class="tag">Kubernetes</li>
+                    <li class="tag">Helm</li>
+                    <li class="tag">ArgoCD</li>
+                    <li class="tag">K3s</li>
+                    <li class="tag">Ingress</li>
+                    <li class="tag tag--violet">GitOps</li>
                   </ul>
                   <div class="project-actions">
-                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Application Full-Stack Next.js" data-i18n-attr="aria-label:proj2.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
-                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Application Full-Stack Next.js" data-i18n-attr="aria-label:proj2.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
+                    <a class="btn btn-primary btn-sm" href="https://github.com/Nova20004/k8s-gitops-cluster" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet Cluster Kubernetes" data-i18n-attr="aria-label:proj2.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
+                    <a class="btn btn-ghost btn-sm" href="https://github.com/Nova20004/k8s-gitops-cluster" target="_blank" rel="noopener noreferrer" aria-label="Code source du projet Cluster Kubernetes" data-i18n-attr="aria-label:proj2.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
                   </div>
                 </div>
               </article>
@@ -621,7 +637,7 @@
                   <div class="monitor-dashboard" aria-hidden="true">
                     <div class="monitor-header">
                       <span class="status-dot"></span>
-                      <span class="monitor-title">Live Metrics · node-01</span>
+                      <span class="monitor-title">Live Metrics &amp; Auto-Healing · node-01</span>
                     </div>
                     <div class="monitor-grid">
                       <div class="metric-box">
@@ -633,8 +649,8 @@
                         <span class="metric-value">3.8 / 16 GB</span>
                       </div>
                       <div class="metric-box">
-                        <span class="metric-label">Requests</span>
-                        <span class="metric-value">42 req/s</span>
+                        <span class="metric-label">Auto-Healing</span>
+                        <span class="metric-value">ACTIVE</span>
                       </div>
                       <div class="metric-box">
                         <span class="metric-label">Uptime</span>
@@ -642,23 +658,26 @@
                       </div>
                     </div>
                     <div class="monitor-footer">
-                      <span class="log-text">&gt; scraping node_exporter:9100</span>
+                      <span class="log-text">&gt; alertmanager: webhook triggered self-heal</span>
                       <span class="badge-healthy">HEALTHY</span>
                     </div>
                   </div>
-                  <span class="project-kicker"><svg aria-hidden="true"><use href="#i-server" /></svg>Monitoring</span>
+                  <span class="project-kicker"><svg aria-hidden="true"><use href="#i-server" /></svg>Observability &amp; SRE</span>
                 </div>
                 <div class="project-body">
-                  <h4 id="proj4-title" class="project-title" data-i18n="proj4.title">Stack de Monitoring Locale</h4>
-                  <p class="project-desc" data-i18n="proj4.desc">Mise en place d'une supervision des ressources d'un serveur Linux (CPU, RAM, requêtes) : métriques collectées par Prometheus et tableaux de bord de visualisation Grafana, lancés en une commande avec Docker Compose.</p>
+                  <h4 id="proj4-title" class="project-title" data-i18n="proj4.title">Observabilité, Alerting &amp; Auto-Guérison</h4>
+                  <p class="project-desc" data-i18n="proj4.desc">Stack de supervision complète (Prometheus, Grafana, Alertmanager, Node Exporter) couplée à un moteur d'auto-remédiation. En cas de dépassement de seuil critique (mémoire saturée, service HS), Alertmanager déclenche automatiquement un webhook d'auto-guérison et notifie sur Slack.</p>
                   <ul class="tags" aria-label="Technologies" data-i18n-attr="aria-label:projects.tech">
                     <li class="tag">Prometheus</li>
                     <li class="tag">Grafana</li>
-                    <li class="tag tag--violet">Docker Compose</li>
+                    <li class="tag">Alertmanager</li>
+                    <li class="tag">Python / Webhooks</li>
+                    <li class="tag">Docker Compose</li>
+                    <li class="tag tag--violet">SRE / Auto-Healing</li>
                   </ul>
                   <div class="project-actions">
-                    <a class="btn btn-primary btn-sm" href="#" aria-label="Voir le projet Stack de Monitoring" data-i18n-attr="aria-label:proj4.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
-                    <a class="btn btn-ghost btn-sm" href="#" aria-label="Code source du projet Stack de Monitoring" data-i18n-attr="aria-label:proj4.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
+                    <a class="btn btn-primary btn-sm" href="https://github.com/Nova20004/observability-auto-healing-stack" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet Stack Observabilité &amp; Auto-Guérison" data-i18n-attr="aria-label:proj4.viewLabel"><span data-i18n="btn.view">Voir le projet</span><svg aria-hidden="true"><use href="#i-external" /></svg></a>
+                    <a class="btn btn-ghost btn-sm" href="https://github.com/Nova20004/observability-auto-healing-stack" target="_blank" rel="noopener noreferrer" aria-label="Code source du projet Stack Observabilité &amp; Auto-Guérison" data-i18n-attr="aria-label:proj4.codeLabel"><svg aria-hidden="true"><use href="#i-code" /></svg><span data-i18n="btn.code">Code source</span></a>
                   </div>
                 </div>
               </article>
@@ -666,8 +685,36 @@
           </ul>
         </div>
 
+        <!-- Bouton déclencheur de la modal -->
         <div class="projects-more" data-reveal>
-          <a class="btn btn-ghost" href="#"><svg aria-hidden="true"><use href="#i-github" /></svg><span data-i18n="projects.more">Voir tous mes projets</span></a>
+          <button type="button" class="btn btn-ghost" id="open-projects-modal" aria-haspopup="dialog">
+            <svg aria-hidden="true"><use href="#i-github" /></svg>
+            <span data-i18n="projects.more">Voir tous mes projets</span>
+          </button>
+        </div>
+
+        <!-- Modal / Popup -->
+        <div class="modal-overlay" id="projects-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+          <div class="modal-card glass">
+            <button type="button" class="modal-close" id="close-projects-modal" aria-label="Fermer la fenêtre">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="modal-body">
+              <div class="modal-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="12" y1="11" x2="12" y2="17"></line><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+              </div>
+              <h4 id="modal-title" class="modal-title">Projets en laboratoire 🧪</h4>
+              <p class="modal-text">
+                D'autres projets d'infrastructure Cloud, pipelines CI/CD complexes et modules d'auto-remédiation sont actuellement en cours de développement et de documentation.
+              </p>
+              <div class="modal-actions">
+                <a href="https://github.com/Nova20004" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <svg aria-hidden="true"><use href="#i-github" /></svg> Mon GitHub officiel
+                </a>
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-modal-ok">Compris</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
