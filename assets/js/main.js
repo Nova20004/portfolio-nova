@@ -1,7 +1,7 @@
 /* =========================================================
    NOVA — interactions
-   Theme (dark/light) · Language (FR/EN) · Space engine ·
-   Scroll HUD · Reveal · Mobile menu · Keyboard piloting · Form
+   Theme (dark/light) · Language (FR/EN) · Section navigation ·
+   Reveal · Mobile menu · Project controls · Contact form
    ========================================================= */
 (() => {
   'use strict';
@@ -42,21 +42,21 @@
 
     'hero.status': 'Available — DevOps &amp; Automation roles',
     'hero.hello': 'Hi, I\'m',
-    'hero.role': 'DevOps <span class="amp">&amp;</span> Automation',
-    'hero.pitch': 'Trained as a <strong>Web Developer</strong>, I grew my profile towards infrastructure to build reliable, automated environments. I put my coding background to work for DevOps: <strong>building CI/CD pipelines, automating deployments and monitoring</strong>. My goal: reduce friction between development and production while keeping applications stable.',
+    'hero.role': 'Web Developer focused on <span class="hero-focus">DevOps <span class="amp">&amp;</span> Automation</span>',
+    'hero.pitch': 'Passionate about web development and infrastructure technologies, I am interested in designing, deploying, and maintaining reliable, high-performing applications. I am developing my skills in process automation, continuous integration and delivery (CI/CD), containerization, and Linux environment administration.',
     'hero.stackLabel': 'Core technologies',
     'hero.contact': 'Contact me',
     'hero.cv': 'Download my resume',
-    'hero.photoAlt': 'Portrait of Joseph Si-carlino',
+    'hero.photoAlt': 'Portrait of Joseph Si-Carlino',
     'hero.badgeA': 'DevOps · CI/CD',
     'hero.badgeB': 'Automation',
-    'hero.scroll': 'Scroll to lift off',
+    'hero.scroll': 'Explore the sections',
     'social.label': 'Social networks',
-    'social.linkedin': 'Joseph Si-carlino on LinkedIn',
-    'social.github': 'Joseph Si-carlino on GitHub',
+    'social.linkedin': 'Joseph Si-Carlino on LinkedIn',
+    'social.github': 'Joseph Si-Carlino on GitHub',
     'social.mail': 'Send an email to Joseph',
 
-    'about.eyebrow': 'Sector 02 · Profile',
+    'about.eyebrow': 'Profile',
     'about.title': 'About me',
     'about.who': 'Who am I?',
     'about.p1': 'A web developer by training, I built <strong>Next.js, React and PostgreSQL</strong> applications before turning to what happens after the code: how it is tested, shipped and monitored in production. Today I work in <strong>DevOps &amp; Automation</strong>: CI/CD pipelines, containerisation with Docker and automation of recurring tasks.',
@@ -76,7 +76,7 @@
     'about.v4t': 'Dev & Infra Synergy',
     'about.v4d': 'With a background in Full-Stack development, I build Developer Experience-driven (DX) infrastructure tailored to application needs.',
 
-    'skills.eyebrow': 'Sector 03 · Arsenal',
+    'skills.eyebrow': 'Skills',
     'skills.title': 'Core skills',
     'skills.lead': 'Six complementary areas, from code to production. Honestly assessed levels, and continuous progress.',
     'skills.legend': 'Level legend',
@@ -120,7 +120,7 @@
     'sk6.c': 'PostgreSQL relational databases',
     'sk6.d': 'Responsive interfaces with Tailwind CSS',
 
-    'xp.eyebrow': 'Sector 04 · Trajectory',
+    'xp.eyebrow': 'Experience',
     'xp.title': 'My journey',
     'xp.lead': 'From IT support to full-stack development, then to automation: a path built to connect code and production.',
     'xp.tags': 'Technologies and tools used',
@@ -144,7 +144,7 @@
     'tag.automation': 'Automation',
     'tag.assets': 'IT asset management',
 
-    'projects.eyebrow': 'Sector 05 · Work',
+    'projects.eyebrow': 'Projects',
     'projects.title': 'My projects',
     'projects.lead': 'Concrete, reproducible work, from code to monitoring: automate, ship, observe.',
     'projects.deliveryGroup': 'Automation &amp; Delivery',
@@ -172,7 +172,7 @@
     'proj4.viewLabel': 'View the Monitoring Stack project',
     'proj4.codeLabel': 'Source code of the Monitoring Stack project',
 
-    'contact.eyebrow': 'Sector 06 · Transmission',
+    'contact.eyebrow': 'Contact',
     'contact.title': 'Contact me',
     'contact.heading': 'Let\'s work together',
     'contact.text': 'Looking for a DevOps &amp; Automation profile with a real development background? I\'m available for a full-time role or an assignment. Let\'s talk about your pipelines, your deployments and how I can help.',
@@ -196,7 +196,7 @@
     'opt.other': 'Other opportunity',
 
     'footer.rights': 'All rights reserved.',
-    'footer.keys': 'Keyboard piloting',
+    'footer.keys': 'Keyboard navigation',
     'footer.top': 'Back to top',
   };
 
@@ -209,15 +209,15 @@
       toLight: 'Activer le thème clair',
       toDark: 'Activer le thème sombre',
       submit: 'Envoyer le message',
-      sending: 'Transmission en cours…',
+      sending: 'Envoi en cours…',
       invalid: 'Merci de compléter correctement tous les champs.',
       success: 'Merci ! Votre message a bien été envoyé.',
       error: 'Une erreur est survenue. Veuillez réessayer.',
       offline: 'Impossible d\'envoyer le message : vérifiez votre connexion.',
     },
     en: {
-      title: 'NOVA | Joseph Si-carlino — DevOps & Automation',
-      description: 'Portfolio of Joseph Si-carlino: DevOps & Automation. CI/CD pipelines, Docker containerisation, automation and monitoring, backed by solid full-stack development experience. Based in Antananarivo.',
+      title: 'NOVA | Joseph Si-Carlino — DevOps & Automation',
+      description: 'Portfolio of Joseph Si-Carlino, a web developer focused on DevOps & Automation, with interests in CI/CD, containerization, automation, and Linux environments. Based in Antananarivo.',
       menuOpen: 'Open menu',
       menuClose: 'Close menu',
       toLight: 'Switch to light theme',
@@ -254,7 +254,6 @@
     refreshMenuLabel();
     if (!submitBtn.disabled) submitLabel.textContent = t('submit');
     formStatus.textContent = '';
-    refreshHud();
   }
 
   /* ---------------------------------------------------------
@@ -273,177 +272,23 @@
     root.dataset.theme = theme;
     store.set('nova-theme', theme);
     refreshThemeLabel();
-    space.refreshColors();
-    if (paused) space.render(0);
   }
 
   themeBtn.addEventListener('click', () => applyTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
 
   /* ---------------------------------------------------------
-     SPACE ENGINE — particle network (constellation): drifting
-     points linked by thin lines, pushed away by the pointer.
-     Scrolling makes the field flow past like a ship moving
-     forward; fast scrolling stretches points into streaks.
+     SCROLL STATE — header, timeline, and active navigation
      --------------------------------------------------------- */
-  const space = (() => {
-    const canvas = $('#space');
-    const ctx = canvas.getContext('2d');
-    const CRUISE = 0.025;
-    const LINK_DIST = 150;
-    const REPULSE_DIST = 100;
-    const DRIFT = 90;
-    const FLOW = 0.35;
-    const DOT_ALPHA = 0.5;
-    const LINK_ALPHA = 0.3;
-    let w = 0, h = 0, particles = [];
-    let starRgb = '255,255,255';
-    let linkRgb = '255,255,255';
-    let velocity = CRUISE;
-    let target = CRUISE;
-    const pointer = { x: -1e4, y: -1e4 };
-
-    function refreshColors() {
-      const cs = getComputedStyle(root);
-      const read = (name) => cs.getPropertyValue(name).trim().replace(/\s+/g, '');
-      starRgb = read('--star-rgb') || starRgb;
-      linkRgb = read('--link-rgb') || linkRgb;
-    }
-
-    function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = innerWidth;
-      h = innerHeight;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.round(clamp(w * h / 30000, 10, 30));
-      particles = Array.from({ length: count }, () => {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = DRIFT * (0.35 + Math.random() * 0.65);
-        return {
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          r: 1 + Math.random() * 2.5,
-        };
-      });
-      render(0);
-    }
-
-    function render(dt) {
-      velocity += (target - velocity) * Math.min(1, dt * 2.4);
-      const flow = (velocity - CRUISE) * 2600 * FLOW;
-      const warp = clamp((Math.abs(velocity) - 0.1) / 0.9, 0, 1);
-      const linkAlpha = LINK_ALPHA * (1 - warp);
-      const ease = Math.min(1, dt * 10);
-
-      ctx.clearRect(0, 0, w, h);
-      ctx.lineCap = 'round';
-
-      for (const p of particles) {
-        p.x += p.vx * dt;
-        p.y += p.vy * dt - flow * dt;
-
-        if (p.x < 0 || p.x > w) { p.vx = -p.vx; p.x = clamp(p.x, 0, w); }
-        if (Math.abs(flow) > 20) {
-          if (p.y < -10) p.y += h + 20;
-          else if (p.y > h + 10) p.y -= h + 20;
-        } else if (p.y < 0 || p.y > h) {
-          p.vy = -p.vy;
-          p.y = clamp(p.y, 0, h);
-        }
-
-        const dx = p.x - pointer.x;
-        const dy = p.y - pointer.y;
-        const d = Math.hypot(dx, dy);
-        if (d > 0 && d < REPULSE_DIST) {
-          const push = (REPULSE_DIST - d) * ease;
-          p.x += (dx / d) * push;
-          p.y += (dy / d) * push;
-        }
-
-        if (warp > 0.02) {
-          ctx.strokeStyle = `rgba(${starRgb},${DOT_ALPHA * (0.4 + warp * 0.6)})`;
-          ctx.lineWidth = p.r * 0.9;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p.x, p.y + flow * (0.04 + warp * 0.06));
-          ctx.stroke();
-        }
-
-        ctx.fillStyle = `rgba(${starRgb},${DOT_ALPHA})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      if (linkAlpha > 0.01) {
-        ctx.lineWidth = 1;
-        for (let i = 0; i < particles.length; i++) {
-          const a = particles[i];
-          for (let j = i + 1; j < particles.length; j++) {
-            const b = particles[j];
-            const dx = a.x - b.x;
-            const dy = a.y - b.y;
-            const d2 = dx * dx + dy * dy;
-            if (d2 > LINK_DIST * LINK_DIST) continue;
-            ctx.strokeStyle = `rgba(${linkRgb},${(1 - Math.sqrt(d2) / LINK_DIST) * linkAlpha})`;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    return {
-      resize,
-      render,
-      refreshColors,
-      setThrust(scrollVelocity) { target = CRUISE + clamp(scrollVelocity / 2600, -2.2, 2.2); },
-      setPointer(x, y) { pointer.x = x; pointer.y = y; },
-      settle() { velocity = target = CRUISE; },
-      get speed() { return Math.abs(velocity); },
-    };
-  })();
-
-  /* ---------------------------------------------------------
-     SCROLL METRICS — progress bar, flight rail, timeline beam
-     --------------------------------------------------------- */
-  const progressTargets = [$('.flight-progress'), $('.flight-rail'), $('.nebula')].filter(Boolean);
-  const shipTargets = $$('.rail-ship, .flight-progress-ship');
-  const railShip = $('.rail-ship');
   const timeline = $('.timeline');
-  const heroVisual = $('[data-parallax]');
-  const hudSpeed = $('#hud-speed');
-  const hudSector = $('#hud-sector');
-  const hudName = $('#hud-name');
-  let lastProgress = -1;
 
   function updateScrollMetrics() {
-    const max = root.scrollHeight - innerHeight;
-    const p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
-    if (Math.abs(p - lastProgress) > 0.0005) {
-      lastProgress = p;
-      progressTargets.forEach((el) => el.style.setProperty('--p', p.toFixed(4)));
-    }
+    const remaining = root.scrollHeight - scrollY - innerHeight;
     header.classList.toggle('is-scrolled', scrollY > 24);
     if (timeline) {
       const r = timeline.getBoundingClientRect();
-      timeline.style.setProperty('--tl', clamp((innerHeight * 0.65 - r.top) / r.height, 0, 1).toFixed(3));
+      if (r.height) timeline.style.setProperty('--tl', clamp((innerHeight * 0.65 - r.top) / r.height, 0, 1).toFixed(3));
     }
-    if (max - scrollY < 4) setActive(sections[sections.length - 1].id);
-  }
-
-  function placeRailMarkers() {
-    const max = root.scrollHeight - innerHeight;
-    $$('.rail-marker').forEach((m) => {
-      const section = document.getElementById(m.hash.slice(1));
-      const at = max > 0 ? clamp((section.offsetTop - 1) / max, 0, 1) : 0;
-      m.style.setProperty('--at', `${(at * 100).toFixed(2)}%`);
-    });
+    if (remaining < 4) setActive(sections[sections.length - 1].id);
   }
 
   let scrollQueued = false;
@@ -452,94 +297,13 @@
     scrollQueued = true;
     requestAnimationFrame(() => { scrollQueued = false; updateScrollMetrics(); });
   }, { passive: true });
+  addEventListener('resize', updateScrollMetrics);
 
   /* ---------------------------------------------------------
-     ANIMATION LOOP (disabled when reduced motion is requested)
-     --------------------------------------------------------- */
-  let paused = mqReduce.matches;
-  let rafId = 0, lastT = 0, lastY = scrollY, scrollVel = 0, dir = 1, hudTimer = 0, lastShipRot = '';
-
-  function loop(time) {
-    const dt = Math.min(0.05, (time - lastT) / 1000 || 0.016);
-    lastT = time;
-    const y = scrollY;
-    scrollVel += ((y - lastY) / dt - scrollVel) * Math.min(1, dt * 8);
-    lastY = y;
-    if (Math.abs(scrollVel) > 30) dir = scrollVel > 0 ? 1 : -1;
-
-    space.setThrust(scrollVel);
-    space.render(dt);
-
-    const thrust = clamp(0.45 + Math.abs(scrollVel) / 1400, 0.45, 1.8).toFixed(2);
-    shipTargets.forEach((el) => el.style.setProperty('--thrust', thrust));
-    const rot = dir > 0 ? '180deg' : '0deg';
-    if (rot !== lastShipRot) {
-      lastShipRot = rot;
-      railShip.style.setProperty('--ship-rot', rot);
-    }
-
-    if (heroVisual && y < innerHeight * 1.3) {
-      heroVisual.style.transform = `translate3d(0, ${(y * 0.16).toFixed(1)}px, 0)`;
-    }
-
-    if (time - hudTimer > 120) {
-      hudTimer = time;
-      hudSpeed.textContent = space.speed.toFixed(2);
-    }
-    rafId = requestAnimationFrame(loop);
-  }
-
-  function start() {
-    if (rafId || paused) return;
-    lastT = performance.now();
-    lastY = scrollY;
-    rafId = requestAnimationFrame(loop);
-  }
-
-  function stop() {
-    cancelAnimationFrame(rafId);
-    rafId = 0;
-    space.settle();
-    space.render(0);
-    if (heroVisual) heroVisual.style.transform = '';
-  }
-
-  mqReduce.addEventListener('change', (e) => {
-    paused = e.matches;
-    if (paused) stop(); else start();
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { cancelAnimationFrame(rafId); rafId = 0; } else { start(); }
-  });
-
-  if (mqFinePointer.matches) {
-    addEventListener('pointermove', (e) => space.setPointer(e.clientX, e.clientY), { passive: true });
-    document.documentElement.addEventListener('pointerleave', () => space.setPointer(-1e4, -1e4));
-  }
-
-  let resizeTimer = 0;
-  addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      space.resize();
-      placeRailMarkers();
-      updateScrollMetrics();
-    }, 150);
-  });
-
-  /* ---------------------------------------------------------
-     ACTIVE SECTION + HUD
+     ACTIVE SECTION
      --------------------------------------------------------- */
   const navLinks = $$('[data-nav]');
   let activeId = '';
-
-  function refreshHud() {
-    const index = sections.findIndex((s) => s.id === activeId);
-    hudSector.textContent = String(Math.max(index, 0) + 1).padStart(2, '0');
-    const link = $(`.nav-links a[href="#${activeId || 'home'}"]`);
-    hudName.textContent = link ? link.textContent.toUpperCase() : '';
-  }
 
   function setActive(id) {
     if (!id || id === activeId) return;
@@ -547,11 +311,9 @@
     navLinks.forEach((a) => {
       const match = a.hash === `#${id}`;
       a.classList.toggle('is-active', match);
-      if (a.closest('.flight-rail')) return;
       if (match) a.setAttribute('aria-current', 'location');
       else a.removeAttribute('aria-current');
     });
-    refreshHud();
   }
 
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -560,7 +322,7 @@
   sections.forEach((s) => sectionObserver.observe(s));
 
   /* ---------------------------------------------------------
-     SCROLL REVEAL — "warp in"
+     SCROLL REVEAL
      --------------------------------------------------------- */
   $$('[data-stagger]').forEach((group) => {
     Array.from(group.children).forEach((child, i) => child.style.setProperty('--d', `${(i % 4) * 0.09}s`));
@@ -638,7 +400,7 @@
     const section = sections[index];
     jumpTarget = index;
     jumpAt = performance.now();
-    section.scrollIntoView({ behavior: paused ? 'auto' : 'smooth', block: 'start' });
+    section.scrollIntoView({ behavior: mqReduce.matches ? 'auto' : 'smooth', block: 'start' });
     section.focus({ preventScroll: true });
     history.replaceState(null, '', `#${section.id}`);
   }
@@ -671,8 +433,8 @@
         const y = (e.clientY - r.top) / r.height;
         card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
         card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
-        if (paused) return;
-        card.style.transform = `perspective(1000px) rotateX(${((0.5 - y) * 6).toFixed(2)}deg) rotateY(${((x - 0.5) * 8).toFixed(2)}deg) translateY(-6px)`;
+        if (mqReduce.matches) return;
+        card.style.transform = `perspective(1000px) rotateX(${((0.5 - y) * 1.5).toFixed(2)}deg) rotateY(${((x - 0.5) * 1.5).toFixed(2)}deg) translateY(-2px)`;
       });
       card.addEventListener('pointerleave', () => { card.style.transform = ''; });
     });
@@ -772,12 +534,8 @@
      INIT
      --------------------------------------------------------- */
   $('#year').textContent = String(new Date().getFullYear());
-  space.refreshColors();
-  space.resize();
   applyLanguage(lang);
   refreshThemeLabel();
-  placeRailMarkers();
   updateScrollMetrics();
-  start();
-  addEventListener('load', () => { placeRailMarkers(); updateScrollMetrics(); });
+  addEventListener('load', updateScrollMetrics);
 })();

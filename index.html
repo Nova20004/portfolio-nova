@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NOVA | Joseph Si-carlino — DevOps &amp; Automation</title>
-  <meta name="description" content="Portfolio de Joseph Si-carlino : DevOps &amp; Automation. Pipelines CI/CD, conteneurisation Docker, automatisation et supervision, avec une solide culture du développement Full-Stack. Basé à Antananarivo.">
-  <meta property="og:title" content="NOVA | Joseph Si-carlino — DevOps &amp; Automation">
-  <meta property="og:description" content="Pipelines CI/CD, Docker, automatisation des déploiements et supervision.">
+  <title>NOVA | Joseph Si-Carlino — DevOps &amp; Automation</title>
+  <meta name="description" content="Portfolio de Joseph Si-Carlino : développeur web orienté DevOps &amp; Automation, intéressé par le CI/CD, la conteneurisation, l'automatisation et les environnements Linux. Basé à Antananarivo.">
+  <meta property="og:title" content="NOVA | Joseph Si-Carlino — DevOps &amp; Automation">
+  <meta property="og:description" content="Développement web, CI/CD, automatisation, conteneurisation Docker et environnements Linux.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>
     (function () {
@@ -28,21 +31,9 @@
   <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu principal</a>
 
   <div class="texture" aria-hidden="true"></div>
-  <div class="nebula" aria-hidden="true"></div>
-  <canvas id="space" aria-hidden="true"></canvas>
 
   <svg class="svg-defs" aria-hidden="true" focusable="false">
     <defs>
-      <linearGradient id="hull" x1="0" x2="1"><stop offset="0" stop-color="#f1f5f9" /><stop offset="1" stop-color="#94a3b8" /></linearGradient>
-      <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" /><stop offset=".35" stop-color="#22d3ee" /><stop offset="1" stop-color="#ef4444" stop-opacity="0" /></linearGradient>
-      <symbol id="ship" viewBox="0 0 40 72">
-        <g class="ship-flame"><path d="M13 44 Q20 72 27 44 Z" fill="url(#flame)" /></g>
-        <path d="M20 2 C29 12 31 26 30 40 L10 40 C9 26 11 12 20 2 Z" fill="url(#hull)" />
-        <circle cx="20" cy="20" r="4.5" fill="#0e7490" stroke="#22d3ee" stroke-width="1.5" />
-        <path d="M10 28 L2 44 L10 41 Z" fill="#ef4444" />
-        <path d="M30 28 L38 44 L30 41 Z" fill="#ef4444" />
-        <rect x="13" y="40" width="14" height="4" rx="1" fill="#475569" />
-      </symbol>
       <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></symbol>
       <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></symbol>
       <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></g></symbol>
@@ -91,10 +82,6 @@
       </div>
     </nav>
 
-    <div class="flight-progress" aria-hidden="true">
-      <div class="flight-progress-bar"></div>
-      <svg class="flight-progress-ship" viewBox="0 0 40 72"><use href="#ship" /></svg>
-    </div>
   </header>
 
   <!-- Outside the header: its backdrop-filter would trap this fixed panel -->
@@ -112,25 +99,6 @@
     <p class="mobile-menu-foot">// josephscarlino@gmail.com</p>
   </div>
 
-  <!-- Flight rail: decorative mirror of the main navigation -->
-  <div class="flight-rail" aria-hidden="true">
-    <div class="rail-track"></div>
-    <a class="rail-marker" data-nav href="#home" tabindex="-1"><span class="rail-label">01 · <span data-i18n="nav.home">Accueil</span></span></a>
-    <a class="rail-marker" data-nav href="#about" tabindex="-1"><span class="rail-label">02 · <span data-i18n="nav.about">À propos</span></span></a>
-    <a class="rail-marker" data-nav href="#skills" tabindex="-1"><span class="rail-label">03 · <span data-i18n="nav.skills">Compétences</span></span></a>
-    <a class="rail-marker" data-nav href="#experience" tabindex="-1"><span class="rail-label">04 · <span data-i18n="nav.experience">Parcours</span></span></a>
-    <a class="rail-marker" data-nav href="#projects" tabindex="-1"><span class="rail-label">05 · <span data-i18n="nav.projects">Projets</span></span></a>
-    <a class="rail-marker" data-nav href="#contact" tabindex="-1"><span class="rail-label">06 · <span data-i18n="nav.contact">Contact</span></span></a>
-    <svg class="rail-ship" viewBox="0 0 40 72"><use href="#ship" /></svg>
-  </div>
-
-  <div class="hud glass" aria-hidden="true">
-    <div>SECT <b id="hud-sector">01</b>/06</div>
-    <div><b id="hud-name">ACCUEIL</b></div>
-    <div><b id="hud-speed">0.00</b> c</div>
-    <div><kbd>J</kbd> <kbd>K</kbd></div>
-  </div>
-
   <main id="main">
 
     <!-- ===================== 01 · HERO ===================== -->
@@ -141,15 +109,15 @@
 
           <h1 id="hero-title" class="hero-in delay-1">
             <span class="hero-hello" data-i18n="hero.hello">Bonjour, je suis</span>
-            <span class="hero-name">Joseph Si-carlino</span>
+            <span class="hero-name">Joseph Si-Carlino</span>
           </h1>
 
           <div class="hero-role hero-in delay-2">
-            <p data-i18n="hero.role">DevOps <span class="amp">&amp;</span> Automation</p>
+            <p data-i18n="hero.role">Développeur Web orienté <span class="hero-focus">DevOps <span class="amp">&amp;</span> Automation</span></p>
           </div>
 
           <p class="hero-pitch hero-in delay-3" data-i18n="hero.pitch">
-            De formation <strong>Développeur Web</strong>, j'ai fait évoluer mon profil vers l'infrastructure pour concevoir des environnements fiables et automatisés. Je mets ma culture du code au service du DevOps : <strong>création de pipelines CI/CD, automatisation des déploiements et supervision</strong>. Mon objectif : réduire les frictions entre le développement et la production tout en garantissant la stabilité des applications.
+            Passionné par le développement web et les technologies d'infrastructure, je m'intéresse à la conception, au déploiement et à la maintenance d'applications fiables et performantes. Je développe mes compétences dans l'automatisation des processus, l'intégration et le déploiement continus (CI/CD), la conteneurisation et l'administration des environnements Linux.
           </p>
 
           <ul class="hero-stack hero-in delay-4" role="list" aria-label="Technologies principales" data-i18n-attr="aria-label:hero.stackLabel">
@@ -162,7 +130,7 @@
 
           <div class="hero-actions hero-in delay-5">
             <a class="btn btn-primary" href="#contact">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
+              <svg aria-hidden="true"><use href="#i-mail" /></svg>
               <span data-i18n="hero.contact">Me contacter</span>
             </a>
             <a class="btn btn-ghost" href="assets/image/JosephScarlino1.pdf" download="JosephScarlino1.pdf">
@@ -172,35 +140,34 @@
           </div>
 
           <ul class="socials hero-in delay-6" role="list" aria-label="Réseaux sociaux" data-i18n-attr="aria-label:social.label">
-            <li><a class="social-link" href="#" aria-label="LinkedIn de Joseph Si-carlino" data-i18n-attr="aria-label:social.linkedin"><svg aria-hidden="true"><use href="#i-linkedin" /></svg></a></li>
-            <li><a class="social-link" href="#" aria-label="GitHub de Joseph Si-carlino" data-i18n-attr="aria-label:social.github"><svg aria-hidden="true"><use href="#i-github" /></svg></a></li>
+            <li><a class="social-link" href="#" aria-label="LinkedIn de Joseph Si-Carlino" data-i18n-attr="aria-label:social.linkedin"><svg aria-hidden="true"><use href="#i-linkedin" /></svg></a></li>
+            <li><a class="social-link" href="#" aria-label="GitHub de Joseph Si-Carlino" data-i18n-attr="aria-label:social.github"><svg aria-hidden="true"><use href="#i-github" /></svg></a></li>
             <li><a class="social-link" href="mailto:josephscarlino@gmail.com" aria-label="Envoyer un e-mail à Joseph" data-i18n-attr="aria-label:social.mail"><svg aria-hidden="true"><use href="#i-mail" /></svg></a></li>
           </ul>
         </div>
 
-        <div class="hero-visual hero-in delay-2" data-parallax>
-          <div class="orbit orbit--2" aria-hidden="true"><span class="satellite satellite--red"></span></div>
-          <div class="orbit orbit--1" aria-hidden="true"><span class="satellite"></span></div>
+        <div class="hero-visual hero-in delay-2">
           <div class="avatar">
-            <div class="avatar-ring" aria-hidden="true"></div>
             <div class="avatar-frame">
-              <img src="assets/joseph-avatar.webp" alt="Portrait de Joseph Si-carlino" data-i18n-attr="alt:hero.photoAlt" width="400" height="400" fetchpriority="high" decoding="sync">
+              <img src="assets/joseph-avatar.webp" alt="Portrait de Joseph Si-Carlino" data-i18n-attr="alt:hero.photoAlt" width="400" height="400" fetchpriority="high" decoding="sync">
             </div>
           </div>
-          <span class="hero-badge hero-badge--a glass" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3" /><circle cx="18" cy="18" r="3" /><path d="M6 9v3a6 6 0 0 0 6 6h3" /></svg>
-            <span data-i18n="hero.badgeA">DevOps · CI/CD</span>
-          </span>
-          <span class="hero-badge hero-badge--b glass" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8" /><path d="M21 3v5h-5" /></svg>
-            <span data-i18n="hero.badgeB">Automatisation</span>
-          </span>
+          <div class="hero-badges" aria-hidden="true">
+            <span class="hero-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3" /><circle cx="18" cy="18" r="3" /><path d="M6 9v3a6 6 0 0 0 6 6h3" /></svg>
+              <span data-i18n="hero.badgeA">DevOps · CI/CD</span>
+            </span>
+            <span class="hero-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8" /><path d="M21 3v5h-5" /></svg>
+              <span data-i18n="hero.badgeB">Automatisation</span>
+            </span>
+          </div>
         </div>
       </div>
 
       <a class="scroll-cue" href="#about">
-        <span class="scroll-cue-mouse" aria-hidden="true"></span>
-        <span data-i18n="hero.scroll">Défiler pour décoller</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
+        <span data-i18n="hero.scroll">Explorer les sections</span>
       </a>
     </section>
 
@@ -208,7 +175,7 @@
     <section id="about" class="section" tabindex="-1" aria-labelledby="about-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="about.eyebrow">Secteur 02 · Profil</p>
+          <p class="eyebrow" data-i18n="about.eyebrow">Profil</p>
           <h2 id="about-title" class="section-title"><span class="gradient-text" data-i18n="about.title">À propos de moi</span></h2>
         </header>
 
@@ -263,7 +230,7 @@
     <section id="skills" class="section" tabindex="-1" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="skills.eyebrow">Secteur 03 · Arsenal</p>
+          <p class="eyebrow" data-i18n="skills.eyebrow">Compétences</p>
           <h2 id="skills-title" class="section-title"><span class="gradient-text" data-i18n="skills.title">Compétences clés</span></h2>
           <p class="section-lead" data-i18n="skills.lead">Six domaines complémentaires, du code à la production. Des niveaux évalués honnêtement, et une progression continue.</p>
         </header>
@@ -424,7 +391,7 @@
     <section id="experience" class="section" tabindex="-1" aria-labelledby="experience-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="xp.eyebrow">Secteur 04 · Trajectoire</p>
+          <p class="eyebrow" data-i18n="xp.eyebrow">Parcours</p>
           <h2 id="experience-title" class="section-title"><span class="gradient-text" data-i18n="xp.title">Mon parcours</span></h2>
           <p class="section-lead" data-i18n="xp.lead">Du support IT au développement Full-Stack, puis à l'automatisation : un parcours construit pour relier le code et la production.</p>
         </header>
@@ -510,7 +477,7 @@
     <section id="projects" class="section" tabindex="-1" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="projects.eyebrow">Secteur 05 · Réalisations</p>
+          <p class="eyebrow" data-i18n="projects.eyebrow">Projets</p>
           <h2 id="projects-title" class="section-title"><span class="gradient-text" data-i18n="projects.title">Mes projets</span></h2>
           <p class="section-lead" data-i18n="projects.lead">Des réalisations concrètes et reproductibles, du code à la supervision : automatiser, livrer, observer.</p>
         </header>
@@ -703,7 +670,7 @@
               <div class="modal-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="12" y1="11" x2="12" y2="17"></line><line x1="9" y1="14" x2="15" y2="14"></line></svg>
               </div>
-              <h4 id="modal-title" class="modal-title">Projets en laboratoire 🧪</h4>
+              <h4 id="modal-title" class="modal-title">Projets en laboratoire</h4>
               <p class="modal-text">
                 D'autres projets d'infrastructure Cloud, pipelines CI/CD complexes et modules d'auto-remédiation sont actuellement en cours de développement et de documentation.
               </p>
@@ -723,7 +690,7 @@
     <section id="contact" class="section" tabindex="-1" aria-labelledby="contact-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="contact.eyebrow">Secteur 06 · Transmission</p>
+          <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
           <h2 id="contact-title" class="section-title"><span class="gradient-text" data-i18n="contact.title">Contactez-moi</span></h2>
         </header>
 
@@ -818,8 +785,8 @@
       </div>
       <div class="footer-bottom">
         <div>
-          <p>&copy; <span id="year">2026</span> NOVA · Joseph Si-carlino. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
-          <p class="footer-signal"><span data-i18n="footer.keys">Pilotage clavier</span> : <kbd>J</kbd> / <kbd>K</kbd> · <kbd>1</kbd>–<kbd>6</kbd></p>
+          <p>&copy; <span id="year">2026</span> NOVA · Joseph Si-Carlino. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+          <p class="footer-signal"><span data-i18n="footer.keys">Navigation au clavier</span> : <kbd>J</kbd> / <kbd>K</kbd> · <kbd>1</kbd>–<kbd>6</kbd></p>
         </div>
         <ul class="socials" role="list" aria-label="Réseaux sociaux" data-i18n-attr="aria-label:social.label">
           <li><a class="social-link" href="#" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin" /></svg></a></li>
