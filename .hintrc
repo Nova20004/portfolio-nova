@@ -1,6 +1,24 @@
 {
-  "extends": ["development"],
+  "extends": [
+    "development"
+  ],
   "hints": {
-    "compat-api/html": ["default", { "ignore": ["img[fetchpriority]"] }]
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "img[fetchpriority]"
+        ]
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "-webkit-text-size-adjust"
+        ]
+      }
+    ],
+    "typescript-config/consistent-casing": "off"
   }
 }

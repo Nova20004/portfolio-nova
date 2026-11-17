@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #d7d7d7;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+html:not([data-lang="en"]) .only-en {
+  display: none !important;
+}
+
+html[data-lang="en"] .only-fr {
+  display: none !important;
+}
+
+.section-anchor {
+  scroll-margin-top: 6rem;
+}
+
+.tech-grid {
+  background-image:
+    linear-gradient(to right, #ffffff 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.diag {
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  background: #000000;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.diag-hero {
+  clip-path: polygon(0 0, 56% 0, 44% 100%, 0 100%);
+}
+.diag-about {
+  clip-path: polygon(0 0, 100% 0, 100% 42%, 0 52%);
+}
+.diag-skills {
+  clip-path: polygon(0 38%, 100% 28%, 100% 100%, 0 100%);
+}
+.diag-projects {
+  clip-path: polygon(0 0, 100% 0, 100% 36%, 0 46%);
+}
+.diag-contact {
+  clip-path: polygon(0 62%, 100% 52%, 100% 100%, 0 100%);
+}
+
+@media (min-width: 900px) {
+  .diag-hero {
+    clip-path: polygon(54.6875% 0%, 100% 0%, 100% 100%, 0% 100%, 44.270833% 83.170254%);
+  }
+  .diag-about {
+    clip-path: polygon(0% 0%, 100% 0%, 57.8125% 15.127389%, 46.875% 82.006369%, 0% 100%);
+  }
+  .diag-skills {
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 45.833333% 87.507098%, 57.291667% 12.492902%);
+  }
+  .diag-projects {
+    clip-path: polygon(0% 0%, 100% 0%, 57.291667% 16.858238%, 45.833333% 83.141762%, 0% 100%);
+  }
+  .diag-contact {
+    clip-path: polygon(100% 0%, 100% 100%, 45.833333% 100%, 57.291667% 14.62766%);
+  }
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 0.45em;
+  height: 0.95em;
+  margin-left: 0.15em;
+  background: currentColor;
+  vertical-align: text-bottom;
+  animation: blink 1.05s steps(1) infinite;
+}
+
+.pulse-live {
+  animation: pulse-bw 2.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-bw {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .diag {
+    transform: none !important;
+    will-change: auto;
+  }
+  .term-cursor,
+  .pulse-live {
+    animation: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 80;
+  background: #000000;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.field-input {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #000000;
+  background: transparent;
+  padding: 0.7rem 0;
+  outline: none;
+  border-radius: 0;
+  color: #000000;
+}
+
+.field-input:focus-visible {
+  border-bottom-color: #000000;
+  outline: 2px solid #000000;
+  outline-offset: 4px;
+}
+
