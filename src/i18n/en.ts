@@ -6,6 +6,7 @@ export const en: Record<MessageKey, string> = {
     "Portfolio of Scarlino: DevOps & Automation. CI/CD pipelines, Kubernetes, Terraform, Ansible and observability.",
   skip: "Skip to main content",
   "nav.about": "About me",
+  "nav.experience": "Experience",
   "nav.skills": "Skills",
   "nav.projects": "Projects",
   "nav.contact": "CONTACT",
@@ -17,7 +18,7 @@ export const en: Record<MessageKey, string> = {
   "menu.close": "Close menu",
   "hero.eyebrow": "INFRASTRUCTURE · AUTOMATION · CLOUD",
   "hero.hello": "Hello, I\u2019m",
-  "hero.role": "DevOps & Automation Engineer",
+  "hero.role": "DevOps & Automation",
   "hero.photoAlt": "Portrait of Scarlino",
   "banner.title": "CLOUD INFRASTRUCTURE & AUTOMATION",
   "banner.text":
@@ -41,7 +42,37 @@ export const en: Record<MessageKey, string> = {
   "about.s3d":
     "Observe systems, anticipate incidents and simplify day-to-day operations.",
   "about.signature": "AUTOMATE / DEPLOY / OPERATE",
-  "skills.index": "02 / SKILLS",
+  "exp.index": "02 / EXPERIENCE",
+  "exp.title": "Four internships.\nOne clear progression.",
+  "exp.lead":
+    "From infrastructure support to GitOps pipelines: maintain, automate, then deploy.",
+  "exp.badge": "INTERNSHIP",
+  "exp.signature": "FIELD WORK BEFORE THEORY.",
+  "exp1.title": "DevOps & Automation Intern",
+  "exp1.when": "Apr. 2026 – Sep. 2026 · 6 months",
+  "exp1.org": "Platform team · technology company",
+  "exp1.body":
+    "CI/CD pipelines with GitHub Actions, GitOps delivery through Argo CD, Docker images, and server automation with Ansible and Bash.",
+  "exp1.tags": "GitHub Actions · Argo CD · Docker · Ansible · Bash",
+  "exp2.title": "Systems & Automation Administrator Intern",
+  "exp2.when": "Sep. 2025 – Feb. 2026 · 6 months",
+  "exp2.org": "Systems operations · infrastructure provider",
+  "exp2.body":
+    "Linux server administration, Python and Bash scripts for repetitive operational tasks, automated backups, and a monitoring setup.",
+  "exp2.tags": "Linux · Python · Bash · Backups · Monitoring",
+  "exp3.title": "Infrastructure & Application Deployment Intern",
+  "exp3.when": "Feb. 2025 – Jul. 2025 · 6 months",
+  "exp3.org": "Delivery team · software vendor",
+  "exp3.body":
+    "Dockerizing web applications, standardizing environments, Git workflows, and a first hands-on exposure to Kubernetes and cloud.",
+  "exp3.tags": "Docker · Git · Kubernetes · Cloud",
+  "exp4.title": "Infrastructure Support & IT Networks Intern",
+  "exp4.when": "May 2024 – Aug. 2024 · 4 months",
+  "exp4.org": "Internal support · IT department",
+  "exp4.body":
+    "Linux and Windows workstation and server maintenance, network diagnostics, shell scripting, and infrastructure documentation.",
+  "exp4.tags": "Linux · Windows · Network · Shell · Documentation",
+  "skills.index": "03 / SKILLS",
   "skills.title": "The tools behind\nthe automation.",
   "skills.lead":
     "A stack designed to build, deploy and operate reproducible environments.",
@@ -57,8 +88,11 @@ export const en: Record<MessageKey, string> = {
   "skills.cloud": "Environments & services",
   "skills.obs": "Metrics & monitoring",
   "skills.gitops": "Declarative deployments",
+  "skills.level.mastered": "Mastered",
+  "skills.level.learning": "Learning",
+  "skills.level.handsOn": "Hands-on",
   "skills.signature": "REPRODUCIBLE BY DESIGN.",
-  "projects.index": "03 / PORTFOLIO — PROJECTS",
+  "projects.index": "04 / PORTFOLIO — PROJECTS",
   "projects.title": "From idea\nto production.",
   "projects.lead":
     "Automate delivery.\nStructure infrastructure.\nKeep systems observable.",
@@ -76,7 +110,7 @@ export const en: Record<MessageKey, string> = {
   "proj5.desc": "Metrics, dashboards and alerts.",
   "proj6.title": "Operations automation",
   "proj6.desc": "Recurring tasks turned into workflows.",
-  "contact.index": "04 / CONTACT",
+  "contact.index": "05 / CONTACT",
   "contact.title": "Let\u2019s talk about your\nnext deployment.",
   "contact.intro":
     "A pipeline to automate, infrastructure to make more reliable or operations to simplify? Let\u2019s talk.",

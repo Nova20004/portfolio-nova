@@ -6,11 +6,13 @@ import { useLang, type Lang } from "@/i18n/language";
 
 const LINKS = [
   { href: "#about", key: "nav.about" },
+  { href: "#experience", key: "nav.experience" },
   { href: "#skills", key: "nav.skills" },
   { href: "#projects", key: "nav.projects" },
 ] as const;
 
-const SHELL = "mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 md:px-8";
+const SHELL =
+  "mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 md:px-8 min-[1024px]:grid min-[1024px]:grid-cols-[1fr_auto_1fr]";
 
 function LangSwitch({ pressed }: { pressed: Lang }) {
   const { setLang, t } = useLang();
@@ -57,46 +59,45 @@ export function Header() {
         }`}
       >
         <div className={SHELL}>
-          <a
-            href="#home"
-            className="font-ui text-3xl font-black leading-none tracking-tighter md:text-4xl"
-            aria-label="Scarlino — accueil"
-          >
-            S
-          </a>
+          {/* Gauche : Logo S */}
+          <div className="flex items-center justify-start">
+            <a
+              href="#home"
+              className="font-ui text-3xl font-black leading-none tracking-tighter md:text-4xl"
+              aria-label="Scarlino — accueil"
+            >
+              S
+            </a>
+          </div>
 
+          {/* Centre : Liens de navigation centrés */}
           <nav
-            className="hidden flex-1 items-center justify-between min-[1024px]:flex min-[1024px]:ml-20 xl:ml-80"
+            className="hidden items-center justify-center gap-2 min-[1024px]:flex"
             aria-label={t("nav.mainLabel")}
           >
-            <div className="flex items-center gap-1">
-              {LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="inline-flex h-10 items-center px-3 font-ui text-[15px] font-bold tracking-wide transition-opacity hover:opacity-70"
-                >
-                  <T k={link.key} />
-                </a>
-              ))}
+            {LINKS.map((link) => (
               <a
-                href="#contact"
-                className="ml-2 inline-flex h-10 items-center border border-current px-4 font-ui text-[13px] font-bold tracking-[0.08em] transition-colors hover:bg-white hover:text-black"
+                key={link.href}
+                href={link.href}
+                className="inline-flex h-10 items-center px-3 font-ui text-[15px] font-bold tracking-wide transition-opacity hover:opacity-70"
               >
-                <T k="nav.contact" />
+                <T k={link.key} />
               </a>
-            </div>
-
-            <span>
-              <LangSwitch pressed={lang} />
-            </span>
+            ))}
+            <a
+              href="#contact"
+              className="ml-2 inline-flex h-10 items-center border border-current px-4 font-ui text-[13px] font-bold tracking-[0.08em] transition-colors hover:bg-white hover:text-black"
+            >
+              <T k="nav.contact" />
+            </a>
           </nav>
 
-          <div className="flex items-center gap-4 min-[1024px]:hidden">
+          {/* Droite : LangSwitch (Desktop + Mobile) & Burger Mobile */}
+          <div className="flex items-center justify-end gap-4">
             <LangSwitch pressed={lang} />
             <button
               type="button"
-              className="inline-flex h-10 w-10 flex-col items-center justify-center gap-[5px]"
+              className="inline-flex h-10 w-10 flex-col items-center justify-center gap-[5px] min-[1024px]:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={t("menu.open")}

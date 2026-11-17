@@ -8,13 +8,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   background: #d7d7d7;
   color: #000000;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html:not([data-lang="en"]) .only-en {
@@ -27,6 +28,15 @@ html[data-lang="en"] .only-fr {
 
 .section-anchor {
   scroll-margin-top: 6rem;
+}
+
+.section-anchor h1,
+.section-anchor h2,
+.section-anchor h3,
+.section-anchor p,
+.section-anchor label,
+.section-anchor button {
+  overflow-wrap: break-word;
 }
 
 .tech-grid {
@@ -45,27 +55,76 @@ html[data-lang="en"] .only-fr {
   will-change: transform;
 }
 
+/* Sous 1024 px la diagonale passe par le centre.
+   Le hero atterrit à 50 % en bas pour couper le portrait centré. */
 .diag-hero {
-  clip-path: polygon(0 0, 56% 0, 44% 100%, 0 100%);
+  clip-path: polygon(0 0, 66% 0, 50% 100%, 0 100%);
 }
-.diag-about {
-  clip-path: polygon(0 0, 100% 0, 100% 42%, 0 52%);
+.diag-about,
+.diag-experience {
+  clip-path: polygon(0 0, 58% 0, 42% 100%, 0 100%);
 }
 .diag-skills {
-  clip-path: polygon(0 38%, 100% 28%, 100% 100%, 0 100%);
+  clip-path: polygon(42% 0, 100% 0, 100% 100%, 58% 100%);
 }
 .diag-projects {
-  clip-path: polygon(0 0, 100% 0, 100% 36%, 0 46%);
+  clip-path: polygon(0 0, 60% 0, 40% 100%, 0 100%);
 }
 .diag-contact {
-  clip-path: polygon(0 62%, 100% 52%, 100% 100%, 0 100%);
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 56% 100%);
 }
 
-@media (min-width: 900px) {
+.hero-copy {
+  width: min(100%, 40rem);
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.hero-copy,
+.hero-copy p,
+.hero-copy h1 {
+  overflow-wrap: break-word;
+}
+
+/* Le mélange est porté par l’élément lui-même (pas par un parent transformé)
+   pour que le texte lise le fond diagonale de la section. */
+@media (max-width: 1023px) {
+  .blend-copy {
+    color: #ffffff;
+    mix-blend-mode: difference;
+    text-align: center;
+  }
+
+  .blend-copy * {
+    color: inherit;
+    border-color: currentColor;
+  }
+
+  .blend-copy img {
+    filter: brightness(0) invert(1);
+  }
+
+  .blend-copy ul {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-copy {
+    margin-left: 0;
+    margin-right: auto;
+    width: min(100%, 26rem);
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
   .diag-hero {
     clip-path: polygon(54.6875% 0%, 100% 0%, 100% 100%, 0% 100%, 44.270833% 83.170254%);
   }
-  .diag-about {
+  .diag-about,
+  .diag-experience {
     clip-path: polygon(0% 0%, 100% 0%, 57.8125% 15.127389%, 46.875% 82.006369%, 0% 100%);
   }
   .diag-skills {

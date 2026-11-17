@@ -32,7 +32,12 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: fr["meta.title"],
   description: fr["meta.description"],
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 const langBoot = `

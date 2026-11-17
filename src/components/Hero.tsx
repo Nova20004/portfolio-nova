@@ -29,39 +29,42 @@ const SOCIALS = [
 ] as const;
 
 export function Hero() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   return (
-    <section id="home" className="section-anchor relative scroll-mt-24 overflow-hidden bg-paper lg:min-h-[760px]">
+    <section id="home" className="section-anchor isolate relative scroll-mt-24 overflow-hidden bg-paper lg:min-h-[760px]">
       <Diagonal variant="hero" />
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 pb-10 pt-28 md:px-8 md:pt-32 lg:min-h-[760px] lg:justify-center">
-        <Reveal className="max-w-xl text-ink lg:max-w-[26rem]">
+      <div className="blend-copy relative z-10 mx-auto flex w-full min-w-0 max-w-7xl flex-col items-center px-6 pb-10 pt-28 text-ink md:pt-32 lg:min-h-[760px] lg:items-start lg:justify-center lg:px-8">
+        <Reveal className="hero-copy">
           <RevealItem>
-            <p className="mb-6 font-display text-[33px] font-light tracking-[0.34em] lg:text-[13px]">
-              <T k="hero.eyebrow" />
-            </p>
+            <div className="mb-6 flex items-center justify-center gap-3 lg:justify-start">
+              <span className="hidden h-[2px] w-8 bg-ink sm:inline-block" aria-hidden="true" />
+              <p className="font-mono text-[clamp(0.65rem,2.3vw,0.8rem)] font-bold uppercase tracking-[0.14em] text-ink sm:tracking-[0.2em]">
+                <T k="hero.eyebrow" />
+              </p>
+            </div>
           </RevealItem>
           <RevealItem>
-            <p className="font-display text-[clamp(1.15rem,2vw,3.65rem)] font-light tracking-[0.12em]">
+            <p className="max-w-full font-display text-[clamp(0.95rem,3.4vw,1.65rem)] font-light tracking-[0.04em] sm:tracking-[0.08em]">
               <T k="hero.hello" />
             </p>
           </RevealItem>
           <RevealItem>
-            <h1 className="font-display text-[clamp(3.4rem,7vw,4.25rem)] font-extrabold leading-[0.92]">
+            <h1 className="max-w-full font-display text-[clamp(1.85rem,8vw,4.25rem)] font-extrabold leading-[0.95] tracking-tight sm:tracking-normal">
               S c a r l i n o
             </h1>
           </RevealItem>
           <RevealItem>
-            <p className="mt-4 font-ui text-[clamp(1rem,1.5vw,1.35rem)] font-medium tracking-wide">
+            <p className="mt-3 max-w-full font-ui text-[clamp(0.82rem,3.1vw,1.35rem)] font-medium leading-snug">
               <T k="hero.role" />
             </p>
           </RevealItem>
           <RevealItem>
-            <ul className="mt-10 flex flex-wrap gap-10" aria-label={t("social.label")}>
+            <ul className="mt-8 flex flex-wrap justify-center gap-x-4 gap-y-4 sm:gap-x-8 lg:justify-start" aria-label={t("social.label")}>
               {SOCIALS.map((item) => (
                 <li key={item.label}>
                   <a
-                    className="inline-flex flex-col gap-2"
+                    className="inline-flex flex-col items-center gap-2 lg:items-start"
                     href={item.href}
                     {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     aria-label={item.label}
@@ -73,11 +76,38 @@ export function Hero() {
               ))}
             </ul>
           </RevealItem>
+
+          {/* Bloc d'ancrage bas de colonne : statut & spécialité */}
+          <RevealItem>
+            <div className="mx-auto mt-9 inline-flex items-center divide-x divide-current/25 border-y border-current/25 py-3.5 lg:mx-0">
+              <div className="pr-5 text-left">
+                <span className="block font-mono text-[9px] font-bold uppercase tracking-[0.2em] opacity-65">
+                  PIPELINES
+                </span>
+                <span className="mt-1 block font-ui text-xs font-extrabold uppercase tracking-wider">
+                  GitOps · CI/CD
+                </span>
+              </div>
+
+              <div className="pl-5 text-left">
+                <span className="block font-mono text-[9px] font-bold uppercase tracking-[0.2em] opacity-65">
+                  {lang === "fr" ? "STATUT" : "STATUS"}
+                </span>
+                <span className="mt-1 inline-flex items-center gap-2 whitespace-nowrap font-ui text-xs font-extrabold uppercase tracking-wider">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-current" />
+                  </span>
+                  Open to work
+                </span>
+              </div>
+            </div>
+          </RevealItem>
         </Reveal>
       </div>
 
-      <div className="pointer-events-none relative z-10 mx-6 -mt-2 flex items-end justify-center overflow-visible lg:absolute lg:inset-y-0 lg:right-0 lg:mx-0 lg:mt-0 lg:w-[46%]">
-        <div className="relative w-[300px] sm:w-[350px] lg:w-[510px]">
+      <div className="pointer-events-none relative z-20 mt-6 w-full lg:absolute lg:inset-y-24 lg:right-[max(1rem,calc((100%-80rem)/2))] lg:mt-0 lg:w-[min(46%,32rem)]">
+        <div className="relative left-1/2 w-[min(68vw,22rem)] -translate-x-1/2 sm:w-80 md:w-96 lg:left-auto lg:w-full lg:translate-x-0">
           {/* Photo Portrait */}
           <Image
             src="/images/joseph-portrait.png"
@@ -88,13 +118,13 @@ export function Hero() {
             priority
             className="h-auto w-full object-contain grayscale contrast-110"
           />
-          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-b from-transparent to-ink" />
+          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-b from-transparent to-transparent lg:to-ink" />
 
           {/* Badge flottant 1 : Haut Gauche (CI/CD & Automation) */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="hidden sm:flex items-center gap-2.5 absolute top-[22%] -left-10 lg:-left-16 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl"
+            className="absolute left-2 top-[18%] hidden items-center gap-2.5 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl md:flex lg:-left-8"
           >
             <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
             <span className="tracking-wide">CI/CD · Automation</span>
@@ -104,7 +134,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="hidden sm:flex items-center gap-2.5 absolute top-[48%] -right-6 lg:-right-10 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl"
+            className="absolute right-2 top-[46%] hidden items-center gap-2.5 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl md:flex lg:-right-4"
           >
             <span className="font-mono text-[11px] text-[#D7D7D7]">&gt;_</span>
             <span className="tracking-wide">Kubernetes · GitOps</span>
@@ -114,7 +144,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="hidden sm:flex items-center gap-2.5 absolute bottom-[22%] -left-6 lg:-left-12 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl"
+            className="absolute bottom-[18%] left-2 hidden items-center gap-2.5 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl md:flex lg:-left-6"
           >
             <span className="font-mono text-[11px] text-[#D7D7D7]">IaC</span>
             <span className="tracking-wide">Terraform · Ansible</span>

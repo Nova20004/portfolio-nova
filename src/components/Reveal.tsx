@@ -20,7 +20,7 @@ export function Reveal({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.08, margin: "0px 0px -5% 0px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
@@ -45,8 +45,8 @@ export function RevealItem({
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 28 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+        hidden: { opacity: 0, x: 0, y: 28 },
+        show: { opacity: 1, x: 0, y: 0, transition: { duration: 0.7, ease: EASE } },
       }}
     >
       {children}

@@ -45,19 +45,20 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-anchor relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="contact-title">
+    <section id="contact" className="section-anchor isolate relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="contact-title">
       <Diagonal variant="contact" />
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-6 pb-8 pt-28 md:px-8 md:pt-32 lg:grid-cols-[minmax(0,46%)_minmax(0,38%)] lg:items-stretch lg:justify-between">
+      <div className="relative mx-auto grid w-full min-w-0 max-w-7xl gap-12 px-6 pb-8 pt-28 md:pt-32 lg:z-10 lg:grid-cols-[minmax(0,46%)_minmax(0,38%)] lg:items-stretch lg:justify-between lg:px-8">
         {/* Colonne Gauche : Formulaire */}
-        <div className="max-w-[40rem] text-ink">
+        <div className="mx-auto w-full min-w-0 max-w-[40rem] text-ink lg:mx-0">
           <Reveal>
+            <div className="blend-copy relative z-10">
             <RevealItem>
               <p className="mb-4 font-ui text-[clamp(0.7rem,1.1vw,1.125rem)] font-bold tracking-[0.04em]">
                 <T k="contact.index" />
               </p>
             </RevealItem>
             <RevealItem>
-              <h2 id="contact-title" className="font-ui text-[clamp(2rem,3.6vw,3.4375rem)] font-bold leading-[1.45]">
+              <h2 id="contact-title" className="break-words font-ui text-[clamp(1.65rem,7vw,3.4375rem)] font-bold leading-[1.2]">
                 <T k="contact.title" />
               </h2>
             </RevealItem>
@@ -66,8 +67,8 @@ export function Contact() {
                 <T k="contact.intro" />
               </p>
             </RevealItem>
-            <RevealItem>
-              <form className="flex max-w-[620px] flex-col gap-5" onSubmit={onSubmit} noValidate={false}>
+            </div>
+            <form className="relative z-10 mx-auto flex w-full max-w-[620px] flex-col gap-5 text-left text-ink max-lg:bg-paper max-lg:px-4 max-lg:py-5" onSubmit={onSubmit} noValidate={false}>
                 <label className="flex flex-col gap-3">
                   <span className="font-ui text-sm font-bold tracking-[0.03em]">
                     <T k="form.name" />
@@ -95,22 +96,21 @@ export function Contact() {
                 <input type="hidden" name="subject" value="DevOps / Automation" />
                 <button
                   type="submit"
-                  className="mt-2 h-[60px] w-fit min-w-[18.75rem] bg-ink px-6 font-ui text-sm font-bold tracking-[0.04em] text-snow hover:bg-snow hover:text-ink hover:outline hover:outline-2 hover:outline-ink"
+                  className="mt-2 h-[60px] w-full max-w-[18.75rem] bg-ink px-6 font-ui text-sm font-bold tracking-[0.04em] text-snow hover:bg-snow hover:text-ink hover:outline hover:outline-2 hover:outline-ink"
                 >
                   <T k="form.submit" />
                 </button>
                 <p className="min-h-6 text-sm" role="status" aria-live="polite">
                   {status ? t(status) : ""}
                 </p>
-              </form>
-            </RevealItem>
+            </form>
           </Reveal>
         </div>
 
         {/* Colonne Droite : Alignée au pixel près avec la colonne de gauche */}
-        <Reveal className="flex h-full flex-col justify-between text-snow max-lg:bg-ink max-lg:p-6">
+        <Reveal className="mx-auto flex h-full w-full min-w-0 max-w-[40rem] flex-col justify-between text-snow lg:mx-0">
           {/* Bloc supérieur : Titres & sous-textes alignés sur ceux de gauche */}
-          <div>
+          <div className="blend-copy relative z-10">
             <RevealItem>
               <p className="mb-4 font-ui text-[clamp(0.7rem,1.1vw,1.125rem)] font-bold tracking-[0.04em] text-snow/60">
                 <T k="contact.eyebrow" />
@@ -130,10 +130,11 @@ export function Contact() {
             </RevealItem>
 
             {/* Réseaux & Informations clés en 2 rangées de 3 cartes architecturales */}
-            <RevealItem>
-              <p className="mt-10 lg:mt-16 mb-4 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-snow/50">
-                <T k="contact.find" />
-              </p>
+          </div>
+          <div className="relative z-10 max-lg:bg-ink max-lg:p-5">
+            <p className="mb-4 mt-10 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-snow/50 lg:mt-16">
+              <T k="contact.find" />
+            </p>
 
               {/* Rangée 1 : Réseaux sociaux (01 - 03) */}
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -236,11 +237,9 @@ export function Contact() {
                   </div>
                 </a>
               </div>
-            </RevealItem>
-          </div>
 
           {/* Bloc inférieur aligné sur le bas du formulaire */}
-          <RevealItem>
+          <RevealItem className="relative z-10">
             <div className="mt-10 select-none">
               <div className="relative flex items-center justify-between overflow-hidden rounded-2xl border border-snow/20 bg-gradient-to-br from-snow/[0.08] via-snow/[0.03] to-transparent p-6">
                 <div
@@ -285,10 +284,11 @@ export function Contact() {
               </div>
             </div>
           </RevealItem>
+          </div>
         </Reveal>
       </div>
 
-      <footer className="relative z-10 mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-8 md:px-8">
+      <footer className="blend-copy relative z-10 mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-8 md:px-8">
         <p className="text-[1.0625rem] text-snow lg:text-ink">
           <T k="footer.copy" />
         </p>

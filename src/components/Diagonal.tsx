@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-type Variant = "hero" | "about" | "skills" | "projects" | "contact";
+type Variant = "hero" | "about" | "experience" | "skills" | "projects" | "contact";
 
 export function Diagonal({ variant }: { variant: Variant }) {
   const ref = useRef<HTMLDivElement>(null);

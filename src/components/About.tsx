@@ -11,9 +11,9 @@ const SERVICES: { n: string; title: MessageKey; body: MessageKey }[] = [
 
 export function About() {
   return (
-    <section id="about" className="section-anchor relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="about-title">
+    <section id="about" className="section-anchor isolate relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="about-title">
       <Diagonal variant="about" />
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-6 pb-16 pt-28 md:gap-14 md:px-8 md:pb-20 md:pt-32 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:items-start lg:justify-between">
+      <div className="blend-copy relative z-10 mx-auto grid w-full min-w-0 max-w-7xl gap-12 px-6 pb-16 pt-28 md:gap-14 md:pb-20 md:pt-32 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:items-start lg:justify-between lg:px-8">
         <Reveal className="max-w-[38rem] text-snow max-lg:pb-10">
           <RevealItem>
             <p className="mb-4 font-ui text-[clamp(0.7rem,1.1vw,1.125rem)] font-bold tracking-[0.04em]">

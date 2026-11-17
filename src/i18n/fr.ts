@@ -4,6 +4,7 @@ export const fr = {
     "Portfolio de Scarlino : DevOps & Automation. Pipelines CI/CD, Kubernetes, Terraform, Ansible et observabilité.",
   skip: "Aller au contenu principal",
   "nav.about": "À PROPOS",
+  "nav.experience": "EXPÉRIENCES",
   "nav.skills": "COMPÉTENCES",
   "nav.projects": "PROJETS",
   "nav.contact": "CONTACT",
@@ -39,7 +40,37 @@ export const fr = {
   "about.s3d":
     "Observer les systèmes, anticiper les incidents et simplifier le maintien en conditions opérationnelles.",
   "about.signature": "AUTOMATE / DEPLOY / OPERATE",
-  "skills.index": "02 / SKILLS",
+  "exp.index": "02 / EXPÉRIENCE",
+  "exp.title": "Quatre stages.\nUne progression nette.",
+  "exp.lead":
+    "Du support infrastructure aux pipelines GitOps : maintenir, automatiser, puis déployer.",
+  "exp.badge": "STAGE",
+  "exp.signature": "TERRAIN AVANT LA THÉORIE.",
+  "exp1.title": "Stage DevOps & Automatisation",
+  "exp1.when": "Avr. 2026 – Sept. 2026 · 6 mois",
+  "exp1.org": "Équipe plateforme · société technologique",
+  "exp1.body":
+    "Pipelines CI/CD avec GitHub Actions, déploiements GitOps via Argo CD, images Docker et automatisation des serveurs avec Ansible et Bash.",
+  "exp1.tags": "GitHub Actions · Argo CD · Docker · Ansible · Bash",
+  "exp2.title": "Stage Administrateur Systèmes & Automation",
+  "exp2.when": "Sept. 2025 – Févr. 2026 · 6 mois",
+  "exp2.org": "Exploitation systèmes · opérateur d’infrastructure",
+  "exp2.body":
+    "Administration de serveurs Linux, scripts Python et Bash pour les tâches répétitives, sauvegardes automatisées et mise en place d’une supervision.",
+  "exp2.tags": "Linux · Python · Bash · Sauvegardes · Supervision",
+  "exp3.title": "Stage Infrastructure & Déploiement Applicatif",
+  "exp3.when": "Févr. 2025 – Juil. 2025 · 6 mois",
+  "exp3.org": "Équipe delivery · éditeur applicatif",
+  "exp3.body":
+    "Conteneurisation d’applications web, environnements standardisés, workflows Git, et première mise en pratique de Kubernetes et du cloud.",
+  "exp3.tags": "Docker · Git · Kubernetes · Cloud",
+  "exp4.title": "Stage Support Infrastructure & Réseaux IT",
+  "exp4.when": "Mai 2024 – Août 2024 · 4 mois",
+  "exp4.org": "Support interne · service informatique",
+  "exp4.body":
+    "Maintenance des postes et serveurs Linux et Windows, diagnostic réseau, scripts shell et documentation de l’infrastructure.",
+  "exp4.tags": "Linux · Windows · Réseau · Shell · Documentation",
+  "skills.index": "03 / SKILLS",
   "skills.title": "Les outils derrière\nl\u2019automatisation.",
   "skills.lead":
     "Une stack pensée pour construire, déployer et exploiter des environnements reproductibles.",
@@ -55,8 +86,11 @@ export const fr = {
   "skills.cloud": "Environnements & services",
   "skills.obs": "Métriques & supervision",
   "skills.gitops": "Déploiements déclaratifs",
+  "skills.level.mastered": "Maîtrisé",
+  "skills.level.learning": "En apprentissage",
+  "skills.level.handsOn": "Pratique",
   "skills.signature": "REPRODUCTIBLE PAR DÉFINITION.",
-  "projects.index": "03 / PORTFOLIO — PROJETS",
+  "projects.index": "04 / PORTFOLIO — PROJETS",
   "projects.title": "De l\u2019idée\nà la production.",
   "projects.lead":
     "Automatiser la livraison.\nStructurer l\u2019infrastructure.\nGarder les systèmes observables.",
@@ -74,7 +108,7 @@ export const fr = {
   "proj5.desc": "Métriques, tableaux de bord et alertes.",
   "proj6.title": "Automatisation des opérations",
   "proj6.desc": "Des tâches récurrentes transformées en workflows.",
-  "contact.index": "04 / CONTACT",
+  "contact.index": "05 / CONTACT",
   "contact.title": "Parlons de votre\nprochain déploiement.",
   "contact.intro":
     "Un pipeline à automatiser, une infrastructure à fiabiliser ou des opérations à simplifier ? Échangeons.",

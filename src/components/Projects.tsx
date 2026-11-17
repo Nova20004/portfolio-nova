@@ -140,10 +140,10 @@ export function Projects() {
   const right = CARDS.filter((card) => card.tone === "light");
 
   return (
-    <section id="projects" className="section-anchor relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="projects-title">
+    <section id="projects" className="section-anchor isolate relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="projects-title">
       <Diagonal variant="projects" />
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 md:px-8 md:pb-20 md:pt-32">
-        <div className="mb-12 grid gap-8 md:grid-cols-2 md:items-end lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:justify-between">
+      <div className="relative mx-auto w-full min-w-0 max-w-7xl px-6 pb-16 pt-28 md:pb-20 md:pt-32 lg:z-10 lg:px-8">
+        <div className="blend-copy relative z-10 mb-12 grid gap-8 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:items-end lg:justify-between">
           <Reveal>
             <RevealItem>
               <p className="mb-4 font-ui text-[clamp(0.7rem,1.1vw,1.125rem)] font-bold tracking-[0.04em] text-snow">
@@ -165,7 +165,7 @@ export function Projects() {
           </Reveal>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:justify-between">
+        <div className="relative z-10 grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:justify-between">
           <Reveal className="flex flex-col gap-5">
             {left.map((card) => (
               <RevealItem key={card.id}>
@@ -182,7 +182,7 @@ export function Projects() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 md:gap-8 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:justify-between">
+        <div className="relative z-10 mt-12 grid md:grid-cols-2 md:gap-8 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:justify-between">
           <div className="hidden md:block" />
           <div className="flex flex-col items-start gap-5">
             <button

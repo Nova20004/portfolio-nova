@@ -4,41 +4,73 @@ import { Reveal, RevealItem } from "@/components/Reveal";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
+type Level = "mastered" | "learning" | "handsOn";
+
 type Skill = {
   name: string;
   usage: MessageKey;
+  level: Level;
   icons: { src: string; size: number }[];
 };
 
+const LEVEL_KEY: Record<Level, MessageKey> = {
+  mastered: "skills.level.mastered",
+  learning: "skills.level.learning",
+  handsOn: "skills.level.handsOn",
+};
+
 const LEFT: Skill[] = [
-  { name: "Linux", usage: "skills.linux", icons: [{ src: "/assets/images/icons/linux.svg", size: 32 }] },
+  { name: "Linux", usage: "skills.linux", level: "mastered", icons: [{ src: "/assets/images/icons/linux.svg", size: 32 }] },
   {
     name: "Bash / Python",
     usage: "skills.bash",
+    level: "mastered",
     icons: [
       { src: "/assets/images/icons/bash.svg", size: 21 },
       { src: "/assets/images/icons/python.svg", size: 21 },
     ],
   },
-  { name: "Git / GitHub Actions", usage: "skills.git", icons: [{ src: "/assets/images/icons/github-actions.svg", size: 32 }] },
-  { name: "Docker", usage: "skills.docker", icons: [{ src: "/assets/images/icons/docker.svg", size: 32 }] },
-  { name: "Kubernetes / Helm", usage: "skills.k8s", icons: [{ src: "/assets/images/icons/kubernetes.svg", size: 32 }] },
+  { name: "Git / GitHub Actions", usage: "skills.git", level: "mastered", icons: [{ src: "/assets/images/icons/github-actions.svg", size: 32 }] },
+  { name: "Docker", usage: "skills.docker", level: "mastered", icons: [{ src: "/assets/images/icons/docker.svg", size: 32 }] },
+  { name: "Kubernetes / Helm", usage: "skills.k8s", level: "learning", icons: [{ src: "/assets/images/icons/kubernetes.svg", size: 32 }] },
 ];
 
 const RIGHT: Skill[] = [
-  { name: "Terraform", usage: "skills.terraform", icons: [{ src: "/assets/images/icons/terraform.svg", size: 32 }] },
-  { name: "Ansible", usage: "skills.ansible", icons: [{ src: "/assets/images/icons/ansible.svg", size: 32 }] },
-  { name: "Cloud", usage: "skills.cloud", icons: [{ src: "/assets/images/icons/cloud.svg", size: 32 }] },
+  { name: "Terraform", usage: "skills.terraform", level: "handsOn", icons: [{ src: "/assets/images/icons/terraform.svg", size: 32 }] },
+  { name: "Ansible", usage: "skills.ansible", level: "mastered", icons: [{ src: "/assets/images/icons/ansible.svg", size: 32 }] },
+  { name: "Cloud", usage: "skills.cloud", level: "learning", icons: [{ src: "/assets/images/icons/cloud.svg", size: 32 }] },
   {
     name: "Prometheus / Grafana",
     usage: "skills.obs",
+    level: "handsOn",
     icons: [
       { src: "/assets/images/icons/prometheus.svg", size: 21 },
       { src: "/assets/images/icons/grafana.svg", size: 21 },
     ],
   },
-  { name: "GitOps / Argo CD", usage: "skills.gitops", icons: [{ src: "/assets/images/icons/kubernetes.svg", size: 32 }] },
+  { name: "GitOps / Argo CD", usage: "skills.gitops", level: "mastered", icons: [{ src: "/assets/images/icons/kubernetes.svg", size: 32 }] },
 ];
+
+function LevelBadge({ level, onDark }: { level: Level; onDark: boolean }) {
+  const tone =
+    level === "mastered"
+      ? onDark
+        ? "border border-current lg:border-transparent lg:bg-snow lg:text-ink"
+        : "border border-current lg:border-transparent lg:bg-ink lg:text-snow"
+      : level === "handsOn"
+        ? onDark
+          ? "border border-solid border-snow/80"
+          : "border border-solid border-ink/70"
+        : onDark
+          ? "border border-dashed border-snow/55"
+          : "border border-dashed border-ink/45";
+
+  return (
+    <span className={`inline-flex max-w-full shrink-0 items-center px-2 py-1 font-ui text-[0.62rem] font-bold uppercase leading-none tracking-[0.12em] ${tone}`}>
+      <T k={LEVEL_KEY[level]} />
+    </span>
+  );
+}
 
 function SkillColumn({
   category,
@@ -50,7 +82,7 @@ function SkillColumn({
   onDark: boolean;
 }) {
   return (
-    <div className={onDark ? "text-snow max-lg:bg-ink max-lg:p-5" : "text-ink max-lg:bg-paper max-lg:p-5"}>
+    <div className={onDark ? "text-snow" : "text-ink"}>
       <Reveal>
         <RevealItem>
           <p className="mb-6 font-ui text-[0.8rem] font-bold tracking-[0.06em]">
@@ -58,7 +90,7 @@ function SkillColumn({
           </p>
         </RevealItem>
         {items.map((item) => (
-          <RevealItem key={item.name} className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-current py-4">
+          <RevealItem key={item.name} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 border-b border-current py-4 sm:gap-4">
             <span className="flex min-h-8 items-center gap-1">
               {item.icons.map((icon) => (
                 <Image
@@ -71,11 +103,14 @@ function SkillColumn({
                 />
               ))}
             </span>
-            <span>
-              <strong className="block font-ui text-[clamp(1.05rem,1.5vw,1.8125rem)] font-bold">{item.name}</strong>
-              <span className="text-[clamp(0.85rem,1.1vw,1.1875rem)]">
-                <T k={item.usage} />
+            <span className="flex min-w-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-3">
+              <span className="min-w-0">
+                <strong className="block font-ui text-[clamp(1.05rem,1.5vw,1.8125rem)] font-bold">{item.name}</strong>
+                <span className="text-[clamp(0.85rem,1.1vw,1.1875rem)]">
+                  <T k={item.usage} />
+                </span>
               </span>
+              <LevelBadge level={item.level} onDark={onDark} />
             </span>
           </RevealItem>
         ))}
@@ -86,10 +121,10 @@ function SkillColumn({
 
 export function Skills() {
   return (
-    <section id="skills" className="section-anchor relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="skills-title">
+    <section id="skills" className="section-anchor isolate relative scroll-mt-24 overflow-hidden bg-paper" aria-labelledby="skills-title">
       <Diagonal variant="skills" />
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 md:px-8 md:pb-20 md:pt-32">
-        <div className="mb-12 grid gap-8 md:grid-cols-2 md:items-end lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:justify-between">
+      <div className="blend-copy relative z-10 mx-auto w-full min-w-0 max-w-7xl px-6 pb-16 pt-28 md:pb-20 md:pt-32 lg:px-8">
+        <div className="mb-12 grid gap-8 lg:grid-cols-[minmax(0,46%)_minmax(0,40%)] lg:items-end lg:justify-between">
           <Reveal>
             <RevealItem>
               <p className="mb-4 font-ui text-[clamp(0.7rem,1.1vw,1.125rem)] font-bold tracking-[0.04em] text-ink">

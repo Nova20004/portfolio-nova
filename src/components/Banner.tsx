@@ -13,7 +13,7 @@ export function Banner() {
       >
         SYS // OPS
       </p>
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-8 md:py-20">
+      <div className="relative mx-auto w-full min-w-0 max-w-7xl px-4 py-16 sm:px-6 md:px-8 md:py-20">
         <div className="grid gap-8 border-b border-white/15 pb-10 md:grid-cols-2 md:items-start md:gap-12">
           <Reveal>
             <RevealItem>
