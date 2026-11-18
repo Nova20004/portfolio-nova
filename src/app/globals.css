@@ -214,3 +214,18 @@ html[data-lang="en"] .only-fr {
   outline-offset: 4px;
 }
 
+/* Typographie des sections 01–05 uniquement.
+   Le hero et le header continuent d’utiliser Raleway, Montserrat et le mono système. */
+.editorial {
+  --font-raleway: var(--font-space), sans-serif;
+  --font-montserrat: var(--font-inter), sans-serif;
+}
+
+.editorial .font-mono {
+  font-family: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.editorial .section-index {
+  font-synthesis: none;
+}
+

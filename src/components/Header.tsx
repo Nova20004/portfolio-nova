@@ -11,6 +11,8 @@ const LINKS = [
   { href: "#projects", key: "nav.projects" },
 ] as const;
 
+const CV_PATH = "/cv/CV-Joseph-Scarlino.pdf";
+
 const SHELL =
   "mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 md:px-8 min-[1024px]:grid min-[1024px]:grid-cols-[1fr_auto_1fr]";
 
@@ -32,6 +34,21 @@ function LangSwitch({ pressed }: { pressed: Lang }) {
         </span>
       ))}
     </div>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg
+      className="h-3.5 w-3.5 shrink-0"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      aria-hidden="true"
+    >
+      <path d="M8 2v8.5M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11" strokeLinecap="square" />
+    </svg>
   );
 }
 
@@ -92,9 +109,20 @@ export function Header() {
             </a>
           </nav>
 
-          {/* Droite : LangSwitch (Desktop + Mobile) & Burger Mobile */}
-          <div className="flex items-center justify-end gap-4">
+          {/* Droite : Bouton CV + LangSwitch + Burger Mobile */}
+          <div className="flex items-center justify-end gap-3 sm:gap-4">
+            <a
+              href={CV_PATH}
+              download="CV-Joseph-Scarlino.pdf"
+              aria-label={lang === "fr" ? "Télécharger mon CV (PDF)" : "Download my Resume (PDF)"}
+              className="hidden items-center gap-1.5 border border-current px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.12em] transition-colors hover:bg-white hover:text-black sm:inline-flex"
+            >
+              <span>{lang === "fr" ? "CV" : "RESUME"}</span>
+              <DownloadIcon />
+            </a>
+
             <LangSwitch pressed={lang} />
+
             <button
               type="button"
               className="inline-flex h-10 w-10 flex-col items-center justify-center gap-[5px] min-[1024px]:hidden"
@@ -121,10 +149,16 @@ export function Header() {
             >
               S
             </a>
-            <button type="button" className="h-10 w-10 text-4xl leading-none" aria-label={t("menu.close")} onClick={() => setOpen(false)}>
+            <button
+              type="button"
+              className="h-10 w-10 text-4xl leading-none"
+              aria-label={t("menu.close")}
+              onClick={() => setOpen(false)}
+            >
               ×
             </button>
           </div>
+
           <nav className="flex flex-col" aria-label={t("nav.mobileLabel")}>
             {[...LINKS, { href: "#contact", key: "nav.contact" as const }].map((link) => (
               <a
@@ -137,7 +171,17 @@ export function Header() {
               </a>
             ))}
           </nav>
-          <div className="mt-auto pt-8">
+
+          <div className="mt-auto flex flex-col gap-6 pt-8">
+            <a
+              href={CV_PATH}
+              download="CV-Joseph-Scarlino.pdf"
+              onClick={() => setOpen(false)}
+              className="inline-flex w-full items-center justify-center gap-2 border border-white px-5 py-3.5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-snow transition-colors hover:bg-white hover:text-ink"
+            >
+              <span>{lang === "fr" ? "TÉLÉCHARGER MON CV (PDF)" : "DOWNLOAD RESUME (PDF)"}</span>
+              <DownloadIcon />
+            </a>
             <LangSwitch pressed={lang} />
           </div>
         </div>

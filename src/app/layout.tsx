@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans, Raleway } from "next/font/google";
+import { Inter, JetBrains_Mono, Montserrat, Open_Sans, Raleway, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { PortfolioAssistant } from "@/components/PortfolioAssistant";
@@ -29,6 +29,27 @@ const openSans = Open_Sans({
   display: "swap",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-space",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: fr["meta.title"],
   description: fr["meta.description"],
@@ -51,7 +72,7 @@ try {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" data-lang="fr" suppressHydrationWarning className={`${raleway.variable} ${montserrat.variable} ${openSans.variable}`}>
+    <html lang="fr" data-lang="fr" suppressHydrationWarning className={`${raleway.variable} ${montserrat.variable} ${openSans.variable} ${spaceGrotesk.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body className="bg-paper font-body text-ink antialiased">
         <Script id="lang-boot" strategy="beforeInteractive">
           {langBoot}
