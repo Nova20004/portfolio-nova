@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useState, type ReactElement } from "react";
 import { DiagramCicd, DiagramIac, DiagramIdp, DiagramK8s, DiagramObs } from "@/components/Diagrams";
 import { Modal, type ModalMode } from "@/components/Modal";
@@ -8,13 +9,15 @@ import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleC
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
+type Tech = { name: string; icon: string };
+
 type Project = {
   id: string;
   title: MessageKey;
   problem: MessageKey;
   solution: MessageKey;
   result: MessageKey;
-  tech: string;
+  tech: Tech[];
   href?: string;
   Diagram: () => ReactElement;
 };
@@ -26,7 +29,15 @@ const PROJECTS: Project[] = [
     problem: "proj1.problem",
     solution: "proj1.solution",
     result: "proj1.result",
-    tech: "FastAPI · GitHub Actions · Ruff · Pytest · Trivy · Docker · GHCR",
+    tech: [
+      { name: "FastAPI", icon: "/assets/images/icons/fastapi.svg" },
+      { name: "GitHub Actions", icon: "/assets/images/icons/github-actions.svg" },
+      { name: "Ruff", icon: "/assets/images/icons/ruff.svg" },
+      { name: "Pytest", icon: "/assets/images/icons/pytest.svg" },
+      { name: "Trivy", icon: "/assets/images/icons/trivy.svg" },
+      { name: "Docker", icon: "/assets/images/icons/docker.svg" },
+      { name: "GHCR", icon: "/assets/images/icons/github-mark.svg" },
+    ],
     href: "https://github.com/Nova20004/cicd-gitops-pipeline",
     Diagram: DiagramCicd,
   },
@@ -36,7 +47,13 @@ const PROJECTS: Project[] = [
     problem: "proj2.problem",
     solution: "proj2.solution",
     result: "proj2.result",
-    tech: "Terraform · Docker · PostgreSQL State Lock · Ansible · Linux",
+    tech: [
+      { name: "Terraform", icon: "/assets/images/icons/terraform.svg" },
+      { name: "Docker", icon: "/assets/images/icons/docker.svg" },
+      { name: "PostgreSQL State Lock", icon: "/assets/images/icons/postgresql.svg" },
+      { name: "Ansible", icon: "/assets/images/icons/ansible.svg" },
+      { name: "Linux", icon: "/assets/images/icons/linux.svg" },
+    ],
     href: "https://github.com/Nova20004/terraform-multienv-iac",
     Diagram: DiagramIac,
   },
@@ -46,8 +63,13 @@ const PROJECTS: Project[] = [
     problem: "proj3.problem",
     solution: "proj3.solution",
     result: "proj3.result",
-    tech: "k3s · Argo CD · Argo Rollouts · Helm · GitOps",
-    href: "https://github.com/Nova20004/k8s-gitops-cluster",
+    tech: [
+      { name: "k3s", icon: "/assets/images/icons/k3s.svg" },
+      { name: "Argo CD", icon: "/assets/images/icons/argo.svg" },
+      { name: "Argo Rollouts", icon: "/assets/images/icons/argo.svg" },
+      { name: "Helm", icon: "/assets/images/icons/helm.svg" },
+      { name: "GitOps", icon: "/assets/images/icons/argo.svg" },
+    ],
     Diagram: DiagramK8s,
   },
   {
@@ -56,8 +78,15 @@ const PROJECTS: Project[] = [
     problem: "proj4.problem",
     solution: "proj4.solution",
     result: "proj4.result",
-    tech: "Prometheus · Grafana · Loki · Alertmanager · Webhook",
-    href: "https://github.com/Nova20004/observability-auto-healing-stack",
+    tech: [
+      { name: "Prometheus", icon: "/assets/images/icons/prometheus.svg" },
+      { name: "Grafana", icon: "/assets/images/icons/grafana.svg" },
+      { name: "Loki", icon: "/assets/images/icons/loki.svg" },
+      { name: "Alertmanager", icon: "/assets/images/icons/alertmanager.svg" },
+      { name: "FastAPI", icon: "/assets/images/icons/fastapi.svg" },
+      { name: "Docker", icon: "/assets/images/icons/docker.svg" },
+    ],
+    href: "https://github.com/Nova20004/observability-self-healing",
     Diagram: DiagramObs,
   },
   {
@@ -66,7 +95,12 @@ const PROJECTS: Project[] = [
     problem: "proj5.problem",
     solution: "proj5.solution",
     result: "proj5.result",
-    tech: "Self-service · Namespace · TTL 24h · GitOps",
+    tech: [
+      { name: "Self-service", icon: "/assets/images/icons/self-service.svg" },
+      { name: "Namespace", icon: "/assets/images/icons/kubernetes.svg" },
+      { name: "TTL 24h", icon: "/assets/images/icons/ttl.svg" },
+      { name: "GitOps", icon: "/assets/images/icons/argo.svg" },
+    ],
     Diagram: DiagramIdp,
   },
 ];
@@ -90,7 +124,7 @@ const showcaseGridStyle = {
   WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
 } as const;
 
-function ProjectRow({ project, onPending }: { project: Project; onPending: () => void }) {
+function ProjectRow({ project }: { project: Project }) {
   const Diagram = project.Diagram;
 
   return (
@@ -128,7 +162,14 @@ function ProjectRow({ project, onPending }: { project: Project; onPending: () =>
               </p>
             </Fact>
             <Fact label="projects.tech">
-              <p className="max-w-[62ch] font-mono text-[13px] leading-relaxed tracking-[0.03em]">{project.tech}</p>
+              <ul className="flex max-w-[62ch] flex-wrap gap-x-4 gap-y-3">
+                {project.tech.map((item) => (
+                  <li key={item.name} className="inline-flex items-center gap-2 font-mono text-[13px] leading-none tracking-[0.03em]">
+                    <Image src={item.icon} alt="" width={18} height={18} className="h-[18px] w-[18px] shrink-0 brightness-0 invert" />
+                    <span>{item.name}</span>
+                  </li>
+                ))}
+              </ul>
             </Fact>
             <Fact label="projects.result">
               <p className={bodyClass}>
@@ -146,13 +187,9 @@ function ProjectRow({ project, onPending }: { project: Project; onPending: () =>
               <T k="projects.repo" />
             </a>
           ) : (
-            <button
-              type="button"
-              onClick={onPending}
-              className={`${eyebrowClass} mt-7 inline-flex border-b border-current pb-1 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current`}
-            >
+            <p className="mt-7 inline-flex cursor-not-allowed select-none border border-white/15 px-3 py-1.5 text-xs uppercase tracking-widest text-white/45">
               <T k="projects.pending" />
-            </button>
+            </p>
           )}
         </div>
       </article>
@@ -186,7 +223,7 @@ export function Projects() {
 
       <Reveal className="mt-14 md:mt-16">
         {PROJECTS.map((project) => (
-          <ProjectRow key={project.id} project={project} onPending={() => setMode("pending")} />
+          <ProjectRow key={project.id} project={project} />
         ))}
       </Reveal>
 
