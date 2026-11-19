@@ -109,16 +109,23 @@ function Frame({
 
 export function DiagramCicd() {
   return (
-    <Frame viewBox="0 0 420 168">
-      <Box x={8} y={14} w={92} h={44} label="COMMIT" />
-      <HArrow x1={100} x2={122} y={36} />
-      <Box x={122} y={14} w={84} h={44} label="TESTS" />
-      <HArrow x1={206} x2={228} y={36} />
-      <Box x={228} y={14} w={88} h={44} label="SONAR" />
-      <VArrow x={272} y1={58} y2={92} />
-      <Box x={184} y={92} w={112} h={52} label="TRIVY" sub="CRITICAL" />
-      <HArrow x1={296} x2={318} y={118} />
-      <Box x={318} y={96} w={90} h={44} label="GHCR" />
+    <Frame viewBox="0 0 640 210">
+      <Box x={8} y={10} w={150} h={44} label="LINT (Ruff)" />
+      <Box x={8} y={80} w={150} h={44} label="TESTS (Pytest)" />
+      <Box x={8} y={150} w={150} h={44} label="TRIVY FS" />
+      <HArrow x1={158} x2={186} y={32} />
+      <HArrow x1={158} x2={186} y={102} />
+      <HArrow x1={158} x2={186} y={172} />
+      <line x1={186} y1={32} x2={186} y2={172} stroke="currentColor" strokeWidth={1} />
+      <HArrow x1={186} x2={214} y={102} />
+      <Box x={214} y={74} w={156} h={64} label="DOCKER" sub="TRIVY IMAGE" />
+      <Label x={292} y={158} size={10} opacity={0.72}>
+        CRITICAL GATE
+      </Label>
+      <HArrow x1={370} x2={396} y={106} />
+      <Box x={396} y={84} w={72} h={44} label="GHCR" />
+      <HArrow x1={468} x2={494} y={106} />
+      <Box x={494} y={80} w={112} h={52} label="CD (PROD)" />
     </Frame>
   );
 }

@@ -4,7 +4,7 @@ import { useCallback, useState, type ReactElement } from "react";
 import { DiagramCicd, DiagramIac, DiagramIdp, DiagramK8s, DiagramObs } from "@/components/Diagrams";
 import { Modal, type ModalMode } from "@/components/Modal";
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -26,7 +26,7 @@ const PROJECTS: Project[] = [
     problem: "proj1.problem",
     solution: "proj1.solution",
     result: "proj1.result",
-    tech: "GitHub Actions · SonarQube · Trivy · Docker · GHCR",
+    tech: "FastAPI · GitHub Actions · Ruff · Pytest · Trivy · Docker · GHCR",
     href: "https://github.com/Nova20004/cicd-gitops-pipeline",
     Diagram: DiagramCicd,
   },
@@ -36,7 +36,8 @@ const PROJECTS: Project[] = [
     problem: "proj2.problem",
     solution: "proj2.solution",
     result: "proj2.result",
-    tech: "Terraform · Remote State · Ansible · Linux",
+    tech: "Terraform · Docker · PostgreSQL State Lock · Ansible · Linux",
+    href: "https://github.com/Nova20004/terraform-multienv-iac",
     Diagram: DiagramIac,
   },
   {
@@ -81,21 +82,39 @@ function Fact({ label, children }: { label: MessageKey; children: React.ReactNod
   );
 }
 
+const showcaseGridStyle = {
+  backgroundImage:
+    "linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px)",
+  backgroundSize: "24px 24px",
+  maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+  WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+} as const;
+
 function ProjectRow({ project, onPending }: { project: Project; onPending: () => void }) {
   const Diagram = project.Diagram;
 
   return (
     <RevealItem>
-      <article className="grid gap-10 border-t border-snow/30 py-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16 lg:py-16">
-        <div className="border-y border-snow/30 py-6 lg:sticky lg:top-28 lg:self-start">
+      <article className="relative grid gap-10 border-t border-snow/30 py-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16 lg:py-16">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-4 z-0 h-[28rem] lg:h-[24rem]"
+          style={showcaseGridStyle}
+        />
+        <div className="relative z-10 border-y border-snow/30 py-6 lg:sticky lg:top-28 lg:self-start">
           <Diagram />
         </div>
-        <div>
-          <div className="flex items-baseline justify-between gap-4">
+        <div className="relative z-10">
+          <div className="flex items-start justify-between gap-4">
             <h3 className={itemTitleClass}>
               <T k={project.title} />
             </h3>
-            <p className={eyebrowClass}>{project.id}</p>
+            <p
+              className="select-none text-4xl font-black leading-none tracking-tight text-white/35 sm:text-5xl md:text-6xl"
+              style={editorialNumberStyle}
+            >
+              {project.id}
+            </p>
           </div>
           <div className="mt-7 grid gap-6">
             <Fact label="projects.problem">

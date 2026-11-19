@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Montserrat, Open_Sans, Raleway, Space_Grotesk } from "next/font/google";
+import { Anybody, Inter, JetBrains_Mono, Montserrat, Open_Sans, Raleway, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { PortfolioAssistant } from "@/components/PortfolioAssistant";
@@ -50,6 +50,13 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const anybody = Anybody({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-anybody",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: fr["meta.title"],
   description: fr["meta.description"],
@@ -72,8 +79,8 @@ try {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" data-lang="fr" suppressHydrationWarning className={`${raleway.variable} ${montserrat.variable} ${openSans.variable} ${spaceGrotesk.variable} ${inter.variable} ${jetbrains.variable}`}>
-      <body className="bg-paper font-body text-ink antialiased">
+    <html lang="fr" data-lang="fr" suppressHydrationWarning className={`${raleway.variable} ${montserrat.variable} ${openSans.variable} ${spaceGrotesk.variable} ${inter.variable} ${jetbrains.variable} ${anybody.variable}`}>
+      <body className={`${anybody.variable} bg-paper font-body text-ink antialiased`}>
         <Script id="lang-boot" strategy="beforeInteractive">
           {langBoot}
         </Script>

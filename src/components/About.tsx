@@ -1,5 +1,5 @@
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -38,7 +38,7 @@ export function About() {
               index > 0 ? "md:border-l" : ""
             }`}
           >
-            <p className={eyebrowClass}>{focus.n}</p>
+            <p className={eyebrowClass} style={editorialNumberStyle}>{focus.n}</p>
             <h3 className={`${itemTitleClass} mt-3`}>
               <T k={focus.title} />
             </h3>

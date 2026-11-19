@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState, type ReactNode } from "react";
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -92,7 +92,7 @@ function Stage({ entry, last }: { entry: Entry; last: boolean }) {
           <p className={`${eyebrowClass} normal-case tracking-[0.08em] opacity-70`}>
             <T k={entry.when} />
           </p>
-          <p className={`${eyebrowClass} mt-3 opacity-50`}>{entry.num}</p>
+          <p className={`${eyebrowClass} mt-3 opacity-50`} style={editorialNumberStyle}>{entry.num}</p>
         </div>
 
         <div>

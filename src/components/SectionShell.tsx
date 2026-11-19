@@ -12,6 +12,11 @@ export const itemTitleClass =
 
 export const bodyClass = "max-w-[62ch] font-ui text-base leading-[1.65] md:text-[17px]";
 
+export const editorialNumberStyle = {
+  fontFamily: "var(--font-anybody), sans-serif",
+  fontFeatureSettings: '"zero" 1',
+} as const;
+
 export function SectionShell({
   id,
   titleId,
@@ -39,9 +44,10 @@ export function SectionShell({
     >
       <p
         aria-hidden="true"
-        className={`section-index pointer-events-none absolute right-[-0.08em] top-[-0.12em] z-0 select-none overflow-hidden font-display font-black leading-none tracking-tighter text-[clamp(9rem,26vw,24rem)] ${
+        className={`section-index pointer-events-none absolute right-[-0.08em] top-[-0.12em] z-0 select-none overflow-hidden font-black leading-none tracking-tighter text-[clamp(9rem,26vw,24rem)] ${
           light ? "text-ink opacity-[0.055]" : "text-snow opacity-[0.065]"
         }`}
+        style={editorialNumberStyle}
       >
         {number}
       </p>
