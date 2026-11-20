@@ -1,9 +1,9 @@
 import type { MessageKey } from "./fr";
 
 export const en: Record<MessageKey, string> = {
-  "meta.title": "Scarlino — DevOps & Automation",
+  "meta.title": "Scarlino — DevOps & Infrastructure Specialist",
   "meta.description":
-    "Portfolio of Scarlino: DevOps & Automation. CI/CD pipelines, Kubernetes, Terraform, Ansible and observability.",
+    "Portfolio of Joseph Scarlino, DevOps & Infrastructure Specialist based in Antananarivo, Madagascar: CI/CD pipelines, GitOps, Terraform, Ansible, observability and self-service environments.",
   skip: "Skip to main content",
   "nav.about": "About me",
   "nav.experience": "Experience",
@@ -18,8 +18,10 @@ export const en: Record<MessageKey, string> = {
   "menu.close": "Close menu",
   "hero.eyebrow": "INFRASTRUCTURE · AUTOMATION · CLOUD",
   "hero.hello": "Hello, I\u2019m",
-  "hero.role": "DevOps & Automation",
+  "hero.role": "DevOps & Infrastructure Specialist",
   "hero.photoAlt": "Portrait of Scarlino",
+  "hero.cta": "View projects",
+  "hero.ctaContact": "Get in touch",
   "banner.title": "CLOUD INFRASTRUCTURE & AUTOMATION",
   "banner.text":
     "I design CI/CD pipelines, deploy Kubernetes clusters and write my infrastructure as code with Terraform and Ansible. The idea is simple: ship quickly, keep environments clean and avoid bad surprises in production.",
@@ -27,9 +29,9 @@ export const en: Record<MessageKey, string> = {
   "banner.i2": "Kubernetes & Cloud",
   "banner.i3": "IaC & Observability",
   "about.index": "01 / INTRODUCTION",
-  "about.title": "Engineering beyond the code.",
+  "about.title": "Operations beyond the code.",
   "about.intro":
-    "From web development to systems engineering, my focus stays the same: understanding how applications run, automating their lifecycle, and building reliable environments.",
+    "From web development to systems administration, my focus stays the same: understanding how applications run, automating their lifecycle, and building reliable environments.",
   "about.s1t": "CI/CD & AUTOMATION",
   "about.s1d": "Tests, builds and deployments chained together, with no manual step at release time.",
   "about.s2t": "CLOUD & INFRASTRUCTURE",
@@ -46,7 +48,7 @@ export const en: Record<MessageKey, string> = {
   "exp.stack": "Stack",
   "exp1.title": "DevOps & Automation Internship",
   "exp1.when": "Recent · 3 months",
-  "exp1.org": "Platform team · DevOps Engineering",
+  "exp1.org": "Platform team · DevOps & Cloud Operations",
   "exp1.b1": "Built automated CI/CD pipelines (linting, testing, security scans, and Docker builds).",
   "exp1.b2": "Implemented reproducible GitOps deployments and application state tracking.",
   "exp1.b3": "Automated server provisioning and configuration with Ansible and Bash.",
@@ -98,7 +100,7 @@ export const en: Record<MessageKey, string> = {
   "skills.level.learning": "Learning",
   "projects.index": "04 / PROJECTS",
   "projects.title": "From commit to production.",
-  "projects.lead": "Hands-on engineering around automation, infrastructure, and software delivery.",
+  "projects.lead": "Hands-on work around automation, infrastructure, and software delivery.",
   "projects.more": "See all my projects",
   "projects.problem": "Problem",
   "projects.solution": "Solution",
@@ -122,10 +124,13 @@ export const en: Record<MessageKey, string> = {
   "proj4.problem": "A saturated or down service remains unavailable without human intervention, while blind restarts erase root-cause logs or trigger crash loops.",
   "proj4.solution": "Prometheus, Grafana, Loki, and Alertmanager stack driving an authenticated runbook engine over least-privilege Docker proxies: pre-mortem log capture (50 lines), graceful load-shedding (/shed-load), health-verified restarts, and sliding-window circuit breaker escalation.",
   "proj4.result": "End-to-end recovery verified in 67s (alert, pre-mortem snapshot in Loki, restart, and /health 200), zero-downtime load-shedding on latency spikes, and 62 automated tests passing.",
-  "proj5.title": "Self-service platform",
-  "proj5.problem": "Opening a test environment still means a ticket and a wait.",
-  "proj5.solution": "The /create-env command provisions a disposable environment and destroys it after 24 h.",
-  "proj5.result": "The environment exists after the command and disappears when the TTL expires.",
+  "proj5.title": "Self-Service Ephemeral Environments Platform",
+  "proj5.problem":
+    "Spinning up an isolated environment to test a feature often takes tedious manual setup, while forgotten stacks keep consuming memory and CPU in the background.",
+  "proj5.solution":
+    "A command-line tool (envctl) and API (/create-env) anyone can run: with a single command, the app and its PostgreSQL database spin up behind a dedicated Traefik URL, guarded by resource quotas and automatic cleanup once the timer expires.",
+  "proj5.result":
+    "193 automated tests (95.8% coverage), only 161 MB of RAM used, instant HTTP routing, and verified full cleanup upon TTL expiration.",
   "contact.index": "05 / CONTACT",
   "contact.title": "Let\u2019s build something reliable.",
   "contact.intro": "Have an infrastructure to improve or a process to automate? Let\u2019s talk.",
@@ -138,6 +143,12 @@ export const en: Record<MessageKey, string> = {
   "contact.zoneValue": "UTC+3",
   "contact.langs": "Languages",
   "contact.langsValue": "FR / EN",
+  "contact.direct": "DIRECT CONTACT",
+  "contact.phone": "Phone",
+  "contact.whatsapp": "WhatsApp",
+  "contact.whatsappCta": "Chat",
+  "contact.location": "Location",
+  "contact.localTime": "Local time",
   "form.name": "YOUR NAME *",
   "form.email": "YOUR EMAIL *",
   "form.phone": "PHONE NUMBER",
@@ -151,7 +162,7 @@ export const en: Record<MessageKey, string> = {
   "form.sending": "Sending\u2026",
   "form.success": "Thank you! Your message has been sent.",
   "form.error": "Something went wrong. Please try again.",
-  "footer.copy": "© Scarlino — DevOps & Automation",
+  "footer.copy": "© Scarlino — DevOps & Infrastructure Specialist",
   "footer.top": "BACK TO TOP ↑",
   "modal.kicker": "PORTFOLIO",
   "modal.title": "Repository being finalized",
@@ -173,13 +184,13 @@ export const en: Record<MessageKey, string> = {
   "chat.chip.path": "Your path & skills",
   "chat.chip.contact": "Availability & contact",
   "chat.reply.projects":
-    "Three repositories are public: a GitOps CI/CD pipeline, a Kubernetes cluster tracked by Argo CD, and an observability stack that restarts whatever drops. The other cards open the detail.",
+    "Four repositories are public: a GitOps CI/CD pipeline, a multi-environment Terraform infrastructure, an observability stack that restarts whatever drops, and a self-service platform for ephemeral environments.",
   "chat.reply.path":
     "Scarlino started in web development and moved into DevOps to get rid of repetitive work: CI/CD pipelines, Kubernetes, Terraform, Ansible, and observability so an incident shows up before it blocks someone.",
   "chat.reply.contact":
-    "He is available for DevOps & Automation contracts and roles. A short note is enough: context, stack, timeline.",
+    "He is available for DevOps & Infrastructure contracts and roles. Based in Antananarivo (UTC+3), reachable by email, at +261 33 03 943 76 or on WhatsApp at +261 37 68 424 20.",
   "chat.reply.github":
-    "cicd-gitops-pipeline runs lint, tests, Trivy, the Docker image and GHCR. k8s-gitops-cluster syncs apps with Argo CD. observability-auto-healing-stack watches CPU and memory, and restarts a service that falls over.",
+    "cicd-gitops-pipeline runs lint, tests, Trivy, the Docker image and GHCR. terraform-multienv-iac describes dev, staging and prod. observability-self-healing restarts a service that falls over. self-service spins up an ephemeral environment in one command.",
   "chat.reply.stack":
     "Day to day: Linux, Bash, Python, GitHub Actions, Docker, Kubernetes, Helm, Terraform, Ansible, Prometheus, Grafana and Argo CD.",
   "chat.reply.fallback":

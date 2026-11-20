@@ -1,4 +1,7 @@
 import type { ReactNode } from "react";
+import { ParallaxNumeral } from "@/components/ParallaxNumeral";
+import { T } from "@/components/T";
+import type { MessageKey } from "@/i18n/fr";
 
 type Tone = "light" | "dark";
 
@@ -16,6 +19,15 @@ export const editorialNumberStyle = {
   fontFamily: "var(--font-anybody), sans-serif",
   fontFeatureSettings: '"zero" 1',
 } as const;
+
+export function SectionTag({ k }: { k: MessageKey }) {
+  return (
+    <p className={`${eyebrowClass} inline-flex items-center gap-3`}>
+      <span aria-hidden="true" className="h-2 w-2 shrink-0 bg-blood-glow" />
+      <T k={k} />
+    </p>
+  );
+}
 
 export function SectionShell({
   id,
@@ -42,15 +54,13 @@ export function SectionShell({
         light ? "border-ink bg-paper text-ink" : "border-snow bg-ink text-snow"
       }`}
     >
-      <p
-        aria-hidden="true"
+      <ParallaxNumeral
+        number={number}
+        style={editorialNumberStyle}
         className={`section-index pointer-events-none absolute right-[-0.08em] top-[-0.12em] z-0 select-none overflow-hidden font-black leading-none tracking-tighter text-[clamp(9rem,26vw,24rem)] ${
           light ? "text-ink opacity-[0.055]" : "text-snow opacity-[0.065]"
         }`}
-        style={editorialNumberStyle}
-      >
-        {number}
-      </p>
+      />
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl px-6 py-20 md:px-8 md:py-28">{children}</div>
       {footer ? <div className="relative z-10">{footer}</div> : null}
     </section>

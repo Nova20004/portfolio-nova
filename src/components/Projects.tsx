@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useState, type ReactElement } from "react";
+import { useInView } from "framer-motion";
+import { useCallback, useRef, useState, type ReactElement } from "react";
 import { DiagramCicd, DiagramIac, DiagramIdp, DiagramK8s, DiagramObs } from "@/components/Diagrams";
 import { Modal, type ModalMode } from "@/components/Modal";
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, SectionTag, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -96,11 +97,14 @@ const PROJECTS: Project[] = [
     solution: "proj5.solution",
     result: "proj5.result",
     tech: [
-      { name: "Self-service", icon: "/assets/images/icons/self-service.svg" },
-      { name: "Namespace", icon: "/assets/images/icons/kubernetes.svg" },
-      { name: "TTL 24h", icon: "/assets/images/icons/ttl.svg" },
-      { name: "GitOps", icon: "/assets/images/icons/argo.svg" },
+      { name: "FastAPI", icon: "/assets/images/icons/fastapi.svg" },
+      { name: "Traefik", icon: "/assets/images/icons/traefik.svg" },
+      { name: "PostgreSQL", icon: "/assets/images/icons/postgresql.svg" },
+      { name: "Docker", icon: "/assets/images/icons/docker.svg" },
+      { name: "CLI envctl", icon: "/assets/images/icons/bash.svg" },
+      { name: "FinOps TTL", icon: "/assets/images/icons/ttl.svg" },
     ],
+    href: "https://github.com/Nova20004/self-service",
     Diagram: DiagramIdp,
   },
 ];
@@ -126,16 +130,31 @@ const showcaseGridStyle = {
 
 function ProjectRow({ project }: { project: Project }) {
   const Diagram = project.Diagram;
+  const diagramRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(diagramRef, { amount: 0.35 });
+  const live = Boolean(project.href);
 
   return (
     <RevealItem>
-      <article className="relative grid gap-10 border-t border-snow/30 py-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16 lg:py-16">
+      <article className="project-card relative grid gap-10 border-t border-snow/30 py-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16 lg:py-16">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-4 z-0 h-[28rem] lg:h-[24rem]"
           style={showcaseGridStyle}
         />
-        <div className="relative z-10 border-y border-snow/30 py-6 lg:sticky lg:top-28 lg:self-start">
+        <div
+          ref={diagramRef}
+          className={`relative z-10 border-y border-snow/30 py-6 transition-colors duration-500 lg:sticky lg:top-28 lg:self-start ${
+            inView && live ? "diagram-live border-t-blood-glow/70" : ""
+          }`}
+        >
+          <p className="mb-4 inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
+            <span
+              aria-hidden="true"
+              className={`h-1.5 w-1.5 rounded-full ${live ? "live-dot bg-blood-glow" : "bg-white/35"}`}
+            />
+            {live ? "LIVE" : "WIP"}
+          </p>
           <Diagram />
         </div>
         <div className="relative z-10">
@@ -182,9 +201,12 @@ function ProjectRow({ project }: { project: Project }) {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${eyebrowClass} mt-7 inline-flex border-b border-current pb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current`}
+              className={`${eyebrowClass} repo-link relative mt-7 inline-flex items-center gap-2 border-b border-current pb-1 transition-colors duration-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blood-glow`}
             >
               <T k="projects.repo" />
+              <span aria-hidden="true" className="repo-arrow inline-block">
+                ↗
+              </span>
             </a>
           ) : (
             <p className="mt-7 inline-flex cursor-not-allowed select-none border border-white/15 px-3 py-1.5 text-xs uppercase tracking-widest text-white/45">
@@ -205,9 +227,7 @@ export function Projects() {
     <SectionShell id="projects" titleId="projects-title" number="04" tone="dark">
       <Reveal className="max-w-3xl">
         <RevealItem>
-          <p className={eyebrowClass}>
-            <T k="projects.index" />
-          </p>
+          <SectionTag k="projects.index" />
         </RevealItem>
         <RevealItem>
           <h2 id="projects-title" className={titleClass}>

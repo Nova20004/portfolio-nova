@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, SectionTag, bodyClass, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -109,9 +109,7 @@ export function Skills() {
     <SectionShell id="skills" titleId="skills-title" number="03" tone="light">
       <Reveal className="max-w-3xl">
         <RevealItem>
-          <p className={eyebrowClass}>
-            <T k="skills.index" />
-          </p>
+          <SectionTag k="skills.index" />
         </RevealItem>
         <RevealItem>
           <h2 id="skills-title" className={titleClass}>

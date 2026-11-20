@@ -5,7 +5,7 @@ import { Diagonal } from "@/components/Diagonal";
 import { Reveal, RevealItem } from "@/components/Reveal";
 import { T } from "@/components/T";
 import { useLang } from "@/i18n/language";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const SOCIALS = [
   {
@@ -30,6 +30,7 @@ const SOCIALS = [
 
 export function Hero() {
   const { lang, t } = useLang();
+  const reduce = useReducedMotion();
 
   return (
     <section id="home" className="section-anchor isolate relative scroll-mt-24 overflow-hidden bg-paper lg:min-h-[760px]">
@@ -38,7 +39,7 @@ export function Hero() {
         <Reveal className="hero-copy">
           <RevealItem>
             <div className="mb-6 flex items-center justify-center gap-3 lg:justify-start">
-              <span className="hidden h-[2px] w-8 bg-ink sm:inline-block" aria-hidden="true" />
+              <span className="hidden h-[2px] w-8 bg-blood sm:inline-block" aria-hidden="true" />
               <p className="font-mono text-[clamp(0.65rem,2.3vw,0.8rem)] font-bold uppercase tracking-[0.14em] text-ink sm:tracking-[0.2em]">
                 <T k="hero.eyebrow" />
               </p>
@@ -77,6 +78,26 @@ export function Hero() {
             </ul>
           </RevealItem>
 
+          <RevealItem>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 lg:justify-start">
+              <a
+                href="#projects"
+                className="accent-cta group inline-flex h-12 items-center gap-3 border-2 border-blood px-5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-[background-color,color,box-shadow] duration-300 hover:bg-blood hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(200,30,43,0.8)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blood"
+              >
+                <T k="hero.cta" />
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none">
+                  →
+                </span>
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center border-b border-current pb-1 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-opacity hover:opacity-70"
+              >
+                <T k="hero.ctaContact" />
+              </a>
+            </div>
+          </RevealItem>
+
           {/* Bloc d'ancrage bas de colonne : statut & spécialité */}
           <RevealItem>
             <div className="mx-auto mt-9 inline-flex items-center divide-x divide-current/25 border-y border-current/25 py-3.5 lg:mx-0">
@@ -95,8 +116,8 @@ export function Hero() {
                 </span>
                 <span className="mt-1 inline-flex items-center gap-2 whitespace-nowrap font-ui text-xs font-extrabold uppercase tracking-wider">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-current" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blood-glow opacity-75 motion-reduce:animate-none" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-blood" />
                   </span>
                   Open to work
                 </span>
@@ -106,7 +127,11 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <div className="pointer-events-none relative z-20 mt-6 w-full lg:absolute lg:inset-y-24 lg:right-[max(1rem,calc((100%-80rem)/2))] lg:mt-0 lg:w-[min(46%,32rem)]">
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 40, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        className="pointer-events-none relative z-20 mt-6 w-full lg:absolute lg:inset-y-24 lg:right-[max(1rem,calc((100%-80rem)/2))] lg:mt-0 lg:w-[min(46%,32rem)]">
         <div className="relative left-1/2 w-[min(68vw,22rem)] -translate-x-1/2 sm:w-80 md:w-96 lg:left-auto lg:w-full lg:translate-x-0">
           {/* Photo Portrait */}
           <Image
@@ -122,17 +147,17 @@ export function Hero() {
 
           {/* Badge flottant 1 : Haut Gauche (CI/CD & Automation) */}
           <motion.div
-            animate={{ y: [0, -8, 0] }}
+            animate={reduce ? undefined : { y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute left-2 top-[18%] hidden items-center gap-2.5 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl md:flex lg:-left-8"
           >
-            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+            <span className="live-dot h-2 w-2 rounded-full bg-blood-glow" />
             <span className="tracking-wide">CI/CD · Automation</span>
           </motion.div>
 
           {/* Badge flottant 2 : Milieu Droit (Kubernetes & Cloud) */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={reduce ? undefined : { y: [0, 8, 0] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             className="absolute right-2 top-[46%] hidden items-center gap-2.5 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl md:flex lg:-right-4"
           >
@@ -142,7 +167,7 @@ export function Hero() {
 
           {/* Badge flottant 3 : Bas Gauche (Terraform & IaC) */}
           <motion.div
-            animate={{ y: [0, -6, 0] }}
+            animate={reduce ? undefined : { y: [0, -6, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute bottom-[18%] left-2 hidden items-center gap-2.5 rounded-lg border border-white/20 bg-black/90 px-3.5 py-2 text-xs font-medium text-white shadow-2xl md:flex lg:-left-6"
           >
@@ -150,7 +175,7 @@ export function Hero() {
             <span className="tracking-wide">Terraform · Ansible</span>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

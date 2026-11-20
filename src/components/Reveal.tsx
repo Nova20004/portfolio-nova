@@ -45,8 +45,8 @@ export function RevealItem({
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, x: 0, y: 28 },
-        show: { opacity: 1, x: 0, y: 0, transition: { duration: 0.7, ease: EASE } },
+        hidden: { opacity: 0, x: 0, y: 28, scale: 0.985 },
+        show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.75, ease: EASE } },
       }}
     >
       {children}

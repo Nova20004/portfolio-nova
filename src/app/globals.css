@@ -4,6 +4,13 @@
 
 :root {
   color-scheme: light;
+  --blood: #9e111e;
+  --blood-glow: #c81e2b;
+}
+
+::selection {
+  background: var(--blood);
+  color: #ffffff;
 }
 
 html {
@@ -105,6 +112,17 @@ html[data-lang="en"] .only-fr {
     filter: brightness(0) invert(1);
   }
 
+  /* Le rouge passerait au cyan sous mix-blend-difference : il redevient monochrome. */
+  .blend-copy .bg-blood,
+  .blend-copy .bg-blood-glow {
+    background-color: currentColor;
+  }
+
+  .blend-copy .accent-cta:hover {
+    color: inherit;
+    background: transparent;
+  }
+
   .blend-copy ul {
     justify-content: center;
   }
@@ -168,6 +186,110 @@ html[data-lang="en"] .only-fr {
   }
 }
 
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 70;
+  height: 3px;
+  background: var(--blood);
+  box-shadow: 0 0 10px rgba(200, 30, 43, 0.65), 0 0 2px var(--blood-glow);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+.accent-glow {
+  box-shadow: 0 0 0 3px rgba(158, 17, 30, 0.25), 0 0 12px rgba(200, 30, 43, 0.7);
+}
+
+.live-dot {
+  animation: live-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes live-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(200, 30, 43, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(200, 30, 43, 0);
+  }
+}
+
+/* Impulsions de données le long des connecteurs : un trait court parcourt chaque fil.
+   --len est la longueur du fil en unités SVG. */
+.flow-pulse {
+  stroke: var(--blood-glow);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 10 var(--len);
+  stroke-dashoffset: 10px;
+  opacity: 0;
+  filter: drop-shadow(0 0 3px rgba(200, 30, 43, 0.9));
+}
+
+.diagram-live .flow-pulse {
+  opacity: 1;
+  animation: flow-pulse 2.4s cubic-bezier(0.45, 0, 0.55, 1) var(--delay, 0s) infinite;
+}
+
+.project-card:hover .diagram-live .flow-pulse,
+.project-card:focus-within .diagram-live .flow-pulse {
+  animation-duration: 1.1s;
+}
+
+@keyframes flow-pulse {
+  from {
+    stroke-dashoffset: 10px;
+  }
+  to {
+    stroke-dashoffset: calc(var(--len) * -1);
+  }
+}
+
+.repo-link .repo-arrow {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.repo-link:hover .repo-arrow,
+.repo-link:focus-visible .repo-arrow {
+  transform: translate(3px, -3px);
+}
+
+.repo-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--blood-glow);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.repo-link:hover::after,
+.repo-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.beacon-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: beacon-ring 1.9s ease-out infinite;
+}
+
+@keyframes beacon-ring {
+  from {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -177,8 +299,17 @@ html[data-lang="en"] .only-fr {
     will-change: auto;
   }
   .term-cursor,
-  .pulse-live {
+  .pulse-live,
+  .live-dot,
+  .beacon-ring {
     animation: none;
+  }
+  .flow-pulse {
+    display: none;
+  }
+  .repo-link .repo-arrow,
+  .repo-link::after {
+    transition: none;
   }
 }
 

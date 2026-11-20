@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import { T } from "@/components/T";
 import { useLang, type Lang } from "@/i18n/language";
@@ -52,10 +53,49 @@ function DownloadIcon() {
   );
 }
 
+const SECTION_IDS = ["about", "experience", "skills", "projects", "contact"] as const;
+
+function ScrollProgress() {
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const smooth = useSpring(scrollYProgress, { stiffness: 140, damping: 28, restDelta: 0.001 });
+  return <motion.div aria-hidden="true" className="scroll-progress" style={{ scaleX: reduce ? scrollYProgress : smooth }} />;
+}
+
+function useActiveSection() {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    const sections = SECTION_IDS.flatMap((id) => {
+      const node = document.getElementById(id);
+      return node ? [node] : [];
+    });
+    if (sections.length === 0) return;
+
+    const visible = new Map<string, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.set(entry.target.id, entry.intersectionRatio);
+          else visible.delete(entry.target.id);
+        }
+        const current = SECTION_IDS.find((id) => visible.has(id)) ?? null;
+        setActive(current);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.01] },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  return active;
+}
+
 export function Header() {
   const { lang, t } = useLang();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -66,6 +106,7 @@ export function Header() {
 
   return (
     <>
+      <ScrollProgress />
       <header
         className={`fixed inset-x-0 top-0 z-50 h-20 transition-all duration-300 ${
           open ? "invisible" : ""
@@ -92,19 +133,33 @@ export function Header() {
             className="hidden items-center justify-center gap-2 min-[1024px]:flex"
             aria-label={t("nav.mainLabel")}
           >
-            {LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="inline-flex h-10 items-center px-3 font-ui text-[15px] font-bold tracking-wide transition-opacity hover:opacity-70"
-              >
-                <T k={link.key} />
-              </a>
-            ))}
+            {LINKS.map((link) => {
+              const current = active === link.href.slice(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={current ? "location" : undefined}
+                  className="relative inline-flex h-10 items-center px-3 font-ui text-[15px] font-bold tracking-wide transition-opacity hover:opacity-70"
+                >
+                  <T k={link.key} />
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-x-3 bottom-1 h-[2px] origin-left bg-blood-glow transition-transform duration-300 ease-out ${
+                      current && scrolled ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </a>
+              );
+            })}
             <a
               href="#contact"
-              className="ml-2 inline-flex h-10 items-center border border-current px-4 font-ui text-[13px] font-bold tracking-[0.08em] transition-colors hover:bg-white hover:text-black"
+              aria-current={active === "contact" ? "location" : undefined}
+              className={`ml-2 inline-flex h-10 items-center gap-2 border px-4 font-ui text-[13px] font-bold tracking-[0.08em] transition-colors hover:border-blood-glow hover:bg-blood hover:text-white ${
+                active === "contact" && scrolled ? "border-blood-glow" : "border-current"
+              }`}
             >
+              {scrolled ? <span aria-hidden="true" className="live-dot h-1.5 w-1.5 rounded-full bg-blood-glow" /> : null}
               <T k="nav.contact" />
             </a>
           </nav>
@@ -164,9 +219,11 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="border-b border-white/15 py-4 font-ui text-xl font-bold"
+                aria-current={active === link.href.slice(1) ? "location" : undefined}
+                className="flex items-center gap-3 border-b border-white/15 py-4 font-ui text-xl font-bold"
                 onClick={() => setOpen(false)}
               >
+                {active === link.href.slice(1) ? <span aria-hidden="true" className="h-2 w-2 bg-blood-glow" /> : null}
                 <T k={link.key} />
               </a>
             ))}

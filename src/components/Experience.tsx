@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, SectionTag, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -127,7 +127,9 @@ function Stage({
       <span
         ref={nodeRef}
         aria-hidden="true"
-        className={`absolute top-11 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-snow ${
+        className={`absolute top-11 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full transition-[background-color,box-shadow,transform] duration-500 ${
+          lit ? "accent-glow scale-125 bg-blood-glow" : "bg-snow"
+        } ${
           side === "left" ? "left-4 md:left-[calc(50%-4.25rem)]" : "left-10 md:left-[calc(50%+4.25rem)]"
         }`}
       />
@@ -163,7 +165,14 @@ function Stage({
           onClick={() => setOpen((value) => !value)}
           className={`${eyebrowClass} mt-6 inline-flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current`}
         >
-          <span aria-hidden="true">{open ? "–" : "+"}</span>
+          <span
+            aria-hidden="true"
+            className={`inline-flex h-5 w-5 items-center justify-center border text-[13px] leading-none transition-[transform,border-color,background-color] duration-300 motion-reduce:transition-none ${
+              open ? "rotate-45 border-blood-glow bg-blood text-white" : "border-current"
+            }`}
+          >
+            +
+          </span>
           <T k={open ? "exp.collapse" : "exp.expand"} />
         </button>
         <Detail open={open}>
@@ -245,9 +254,7 @@ export function Experience() {
     <SectionShell id="experience" titleId="experience-title" number="02" tone="dark">
       <Reveal className="max-w-3xl">
         <RevealItem>
-          <p className={eyebrowClass}>
-            <T k="exp.index" />
-          </p>
+          <SectionTag k="exp.index" />
         </RevealItem>
         <RevealItem>
           <h2 id="experience-title" className={titleClass}>
@@ -275,8 +282,15 @@ export function Experience() {
           />
           {journey.d && journey.progress > 0 ? (
             <g>
-              <circle cx={journey.beacon.x} cy={journey.beacon.y} r="12" fill="rgba(255,255,255,0.16)" />
-              <circle cx={journey.beacon.x} cy={journey.beacon.y} r="4.5" fill="#ffffff" />
+              <circle className="beacon-ring" cx={journey.beacon.x} cy={journey.beacon.y} r="10" fill="none" stroke="#C81E2B" strokeWidth="1.5" />
+              <circle cx={journey.beacon.x} cy={journey.beacon.y} r="12" fill="rgba(200,30,43,0.22)" />
+              <circle
+                cx={journey.beacon.x}
+                cy={journey.beacon.y}
+                r="5"
+                fill="#C81E2B"
+                style={{ filter: "drop-shadow(0 0 6px rgba(200,30,43,0.95))" }}
+              />
             </g>
           ) : null}
         </svg>

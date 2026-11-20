@@ -15,6 +15,10 @@ const config: Config = {
         ink: "#000000",
         paper: "#d7d7d7",
         snow: "#ffffff",
+        blood: {
+          DEFAULT: "#9E111E",
+          glow: "#C81E2B",
+        },
       },
       fontFamily: {
         display: ["var(--font-raleway)", "sans-serif"],

@@ -1,7 +1,7 @@
 export const fr = {
-  "meta.title": "Scarlino — DevOps & Automation",
+  "meta.title": "Scarlino — Spécialiste DevOps & Infrastructure",
   "meta.description":
-    "Portfolio de Scarlino : DevOps & Automation. Pipelines CI/CD, Kubernetes, Terraform, Ansible et observabilité.",
+    "Portfolio de Joseph Scarlino, spécialiste DevOps & Infrastructure basé à Antananarivo (Madagascar) : pipelines CI/CD, GitOps, Terraform, Ansible, observabilité et environnements self-service.",
   skip: "Aller au contenu principal",
   "nav.about": "À PROPOS",
   "nav.experience": "EXPÉRIENCES",
@@ -16,8 +16,10 @@ export const fr = {
   "menu.close": "Fermer le menu",
   "hero.eyebrow": "INFRASTRUCTURE · AUTOMATISATION · CLOUD · CI/CD",
   "hero.hello": "Bonjour, je suis",
-  "hero.role": "DevOps & Automatisation",
+  "hero.role": "Spécialiste DevOps & Infrastructure",
   "hero.photoAlt": "Portrait de Scarlino",
+  "hero.cta": "Voir les projets",
+  "hero.ctaContact": "Me contacter",
   "banner.title": "AUTOMATISATION & INFRASTRUCTURE CLOUD",
   "banner.text":
     "Je conçois des pipelines CI/CD, je déploie des clusters Kubernetes et j\u2019écris mon infrastructure en code avec Terraform et Ansible. L\u2019idée est simple : livrer vite, garder des environnements propres et éviter les mauvaises surprises en production.",
@@ -25,9 +27,9 @@ export const fr = {
   "banner.i2": "Kubernetes & Cloud",
   "banner.i3": "IaC & Observabilité",
   "about.index": "01 / INTRODUCTION",
-  "about.title": "Engineering beyond the code.",
+  "about.title": "Operations beyond the code.",
   "about.intro":
-    "Du développement web à l\u2019ingénierie système, mon intérêt reste le même : comprendre comment les applications fonctionnent, automatiser leur cycle de vie et construire des environnements fiables.",
+    "Du développement web à l\u2019administration système, mon intérêt reste le même : comprendre comment les applications fonctionnent, automatiser leur cycle de vie et construire des environnements fiables.",
   "about.s1t": "CI/CD & AUTOMATION",
   "about.s1d": "Tests, builds et déploiements enchaînés, sans geste manuel au moment de livrer.",
   "about.s2t": "CLOUD & INFRASTRUCTURE",
@@ -44,7 +46,7 @@ export const fr = {
   "exp.stack": "Stack",
   "exp1.title": "Stage DevOps & Automatisation",
   "exp1.when": "Récent · 3 mois",
-  "exp1.org": "Équipe plateforme · Ingénierie DevOps",
+  "exp1.org": "Équipe plateforme · Développement DevOps & Cloud",
   "exp1.b1": "Conception de pipelines CI/CD automatisés (lint, tests, scans de sécurité et build Docker).",
   "exp1.b2": "Déploiements GitOps reproductibles et suivi de l\u2019état des applications.",
   "exp1.b3": "Automatisation de la configuration des serveurs avec Ansible et Bash.",
@@ -121,10 +123,13 @@ export const fr = {
   "proj4.problem": "Un service saturé ou en panne reste indisponible sans intervention humaine, et un redémarrage aveugle efface les logs de diagnostic ou provoque des boucles de crash.",
   "proj4.solution": "Stack Prometheus, Grafana, Loki et Alertmanager pilotant un moteur de runbooks authentifié via proxies Docker au moindre privilège : capture forensique pré-mortem (50 lignes de logs), délestage de charge (/shed-load), redémarrage vérifié et disjoncteur anti-boucle (escalade).",
   "proj4.result": "Boucle complète validée en 67 s (alerte, snapshot pré-mortem dans Loki, restart et /health 200), délestage sans coupure sur pic de latence et 62 tests automatisés passés.",
-  "proj5.title": "Plateforme self-service",
-  "proj5.problem": "Ouvrir un environnement de test passe encore par un ticket et une attente.",
-  "proj5.solution": "La commande /create-env provisionne un environnement jetable, détruit au bout de 24 h.",
-  "proj5.result": "L\u2019environnement existe après la commande et disparaît à l\u2019expiration du TTL.",
+  "proj5.title": "Plateforme Self-Service d\u2019Environnements Éphémères",
+  "proj5.problem":
+    "Monter un environnement isolé pour tester une fonctionnalité demande souvent des manipulations longues, et les environnements oubliés continuent de consommer de la mémoire et du CPU inutilement.",
+  "proj5.solution":
+    "Un outil en ligne de commande (envctl) et une API (/create-env) accessibles à tout développeur : en une commande, l\u2019application et sa base PostgreSQL démarrent avec une URL dédiée via Traefik, des quotas de sécurité et une suppression automatique à la fin du délai choisi.",
+  "proj5.result":
+    "193 tests automatisés (95,8 % de couverture), seulement 161 Mo de RAM utilisés, accès HTTP immédiat et nettoyage complet vérifié à l\u2019expiration du TTL.",
   "contact.index": "05 / CONTACT",
   "contact.title": "Let's build something reliable.",
   "contact.intro": "Vous avez une infrastructure à améliorer ou un processus à automatiser ? Parlons\u2011en.",
@@ -137,6 +142,12 @@ export const fr = {
   "contact.zoneValue": "UTC+3",
   "contact.langs": "Langues",
   "contact.langsValue": "FR / EN",
+  "contact.direct": "COORDONNÉES DIRECTES",
+  "contact.phone": "Téléphone",
+  "contact.whatsapp": "WhatsApp",
+  "contact.whatsappCta": "Discuter",
+  "contact.location": "Localisation",
+  "contact.localTime": "Heure locale",
   "form.name": "VOTRE NOM *",
   "form.email": "VOTRE EMAIL *",
   "form.phone": "TÉLÉPHONE",
@@ -150,7 +161,7 @@ export const fr = {
   "form.sending": "Envoi en cours…",
   "form.success": "Merci ! Votre message a bien été envoyé.",
   "form.error": "Une erreur est survenue. Veuillez réessayer.",
-  "footer.copy": "© Scarlino — DevOps & Automation",
+  "footer.copy": "© Scarlino — Spécialiste DevOps & Infrastructure",
   "footer.top": "RETOUR EN HAUT ↑",
   "modal.kicker": "PORTFOLIO",
   "modal.title": "Dépôt en cours de finalisation",
@@ -172,13 +183,13 @@ export const fr = {
   "chat.chip.path": "Ton parcours & compétences",
   "chat.chip.contact": "Disponibilité & Contact",
   "chat.reply.projects":
-    "Trois dépôts sont publics : un pipeline CI/CD GitOps, un cluster Kubernetes suivi par Argo CD, et une stack d\u2019observabilité qui relance ce qui tombe. Les autres cartes ouvrent le détail.",
+    "Quatre dépôts sont publics : un pipeline CI/CD GitOps, une infrastructure Terraform multi-environnements, une stack d\u2019observabilité qui relance ce qui tombe, et une plateforme self-service d\u2019environnements éphémères.",
   "chat.reply.path":
     "Scarlino vient du développement web. Il est passé au DevOps pour supprimer le travail répétitif : pipelines CI/CD, Kubernetes, Terraform, Ansible, et de l\u2019observabilité pour voir un incident avant qu\u2019il bloque quelqu\u2019un.",
   "chat.reply.contact":
-    "Il est disponible pour des missions et des postes DevOps & Automation. Un message court suffit : le contexte, la stack, le délai.",
+    "Il est disponible pour des missions et des postes DevOps & Infrastructure. Basé à Antananarivo (UTC+3), joignable par e-mail, au +261 33 03 943 76 ou sur WhatsApp au +261 37 68 424 20.",
   "chat.reply.github":
-    "cicd-gitops-pipeline enchaîne lint, tests, Trivy, l\u2019image Docker et GHCR. k8s-gitops-cluster synchronise les apps avec Argo CD. observability-auto-healing-stack suit le CPU, la mémoire, et relance un service qui décroche.",
+    "cicd-gitops-pipeline enchaîne lint, tests, Trivy, l\u2019image Docker et GHCR. terraform-multienv-iac décrit dev, staging et prod. observability-self-healing relance un service qui décroche. self-service crée un environnement éphémère en une commande.",
   "chat.reply.stack":
     "Au quotidien : Linux, Bash, Python, GitHub Actions, Docker, Kubernetes, Helm, Terraform, Ansible, Prometheus, Grafana et Argo CD.",
   "chat.reply.fallback":

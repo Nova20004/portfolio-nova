@@ -1,5 +1,5 @@
 import { Reveal, RevealItem } from "@/components/Reveal";
-import { SectionShell, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
+import { SectionShell, SectionTag, bodyClass, editorialNumberStyle, eyebrowClass, itemTitleClass, titleClass } from "@/components/SectionShell";
 import { T } from "@/components/T";
 import type { MessageKey } from "@/i18n/fr";
 
@@ -14,9 +14,7 @@ export function About() {
     <SectionShell id="about" titleId="about-title" number="01" tone="light">
       <Reveal className="max-w-3xl">
         <RevealItem>
-          <p className={eyebrowClass}>
-            <T k="about.index" />
-          </p>
+          <SectionTag k="about.index" />
         </RevealItem>
         <RevealItem>
           <h2 id="about-title" className={titleClass}>
